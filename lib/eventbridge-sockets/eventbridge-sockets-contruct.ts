@@ -140,7 +140,7 @@ export class EventBridgeWebSocket extends Construct {
     dependencies.add(disconnectRoute);
     deployment.node.addDependency(dependencies);
 
-    new CfnOutput(this, 'Websocket endpoint', { value: api.attrApiEndpoint });
+    new CfnOutput(this, 'Websocket endpoint', { value: `${api.attrApiEndpoint}/${config?.stage}` });
   }
 
   private createFunction(name: string, tableName: string, options: any = {}) {
