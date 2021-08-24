@@ -1,0 +1,53 @@
+{
+  "name": "cdk-eventbridge-socket",
+  "version": "0.0.0-beta.0",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "test": "jest",
+    "bump:lib": "npm --no-git-tag-version --allow-same-version version $VERSION"
+  },
+  "devDependencies": {
+    "@aws-cdk/assert": "^1.118.0",
+    "@types/jest": "^26.0.10",
+    "@types/node": "10.17.27",
+    "aws-cdk": "1.77.0",
+    "aws-sdk": "^2.973.0",
+    "aws-sdk-mock": "^5.2.2",
+    "jest": "^26.4.2",
+    "ts-jest": "^26.2.0",
+    "ts-node": "^9.0.0",
+    "typescript": "~3.9.7"
+  },
+  "dependencies": {
+    "@aws-cdk/aws-apigatewayv2": "^1.118.0",
+    "@aws-cdk/aws-dynamodb": "^1.118.0",
+    "@aws-cdk/aws-events": "^1.118.0",
+    "@aws-cdk/aws-events-targets": "^1.118.0",
+    "@aws-cdk/aws-eventschemas": "^1.118.0",
+    "@aws-cdk/aws-iam": "^1.118.0",
+    "@aws-cdk/aws-lambda": "^1.118.0",
+    "@aws-cdk/aws-sns": "^1.118.0",
+    "@aws-cdk/aws-sns-subscriptions": "^1.118.0",
+    "@aws-cdk/aws-sqs": "^1.118.0",
+    "@aws-cdk/core": "^1.118.0"
+  },
+  "keywords": [
+    "aws",
+    "cdk",
+    "eventbridge",
+    "sockets"
+  ],
+  "author": "David Boyne",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/boyney123/cdk-eventbridge-socket-test.git"
+  }
+}

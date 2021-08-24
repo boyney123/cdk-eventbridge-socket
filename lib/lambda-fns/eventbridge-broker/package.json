@@ -1,0 +1,11 @@
+{
+  "name": "eventbridge-broker",
+  "version": "1.0.0",
+  "description": "broker that listens for eventbridge events and passes them to all connections",
+  "main": "src/app.js",
+  "author": "SAM CLI",
+  "license": "MIT",
+  "dependencies": {
+    "aws-sdk": "^2.690.0"
+  }
+}
