@@ -1,0 +1,300 @@
+
+<html lang="en" data-reactroot="">
+
+<head>
+    <meta charSet="utf-8" />
+    <title>cdk-eventbridge-socket</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Description of my project" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="cdk-eventbridge-socket" />
+    <meta property="og:description" content="Description of my project" />
+    <meta property="og:image" />
+    <meta property="og:image:alt" content="Gitpages" />
+    <meta property="og:image:width" content="800" />
+    <meta property="og:image:height" content="600" />
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:site_name" content="Gitpages" />
+    <link rel="icon" type="image/png" href="http://gitpages.app/favicon-32x32.png" />
+    <style>
+        #ReactMarkdown pre {
+            background: #1e1e1e;
+            padding: 5px 10px;
+            margin: 0;
+            font-size: 12px;
+            border-radius: 10px;
+        }
+
+        .image-slant-right {
+            /* width: 40%; */
+            margin-bottom: 0px;
+            -webkit-transform: perspective(1500px) rotateY(15deg);
+            -moz-transform: perspective(1500px) rotateY(-15deg);
+            -ms-transform: perspective(1500px) rotateY(-15deg);
+            transform: perspective(1500px) rotateY(-15deg);
+            transition: transform 1s;
+        }
+
+        .image-slant-left {
+            /* width: 40%; */
+            margin-bottom: 0px;
+            -webkit-transform: perspective(1500px) rotateY(15deg);
+            -moz-transform: perspective(1500px) rotateY(15deg);
+            -ms-transform: perspective(1500px) rotateY(15deg);
+            transform: perspective(1500px) rotateY(15deg);
+            box-shadow: 1px 25px 20px #c6ced8;
+            transition: transform 1s;
+        }
+
+        .image-slant-right:hover {
+            -webkit-transform: perspective(1500px) rotateY(-5deg);
+            -moz-transform: perspective(1500px) rotateY(-5deg);
+            -ms-transform: perspective(1500px) rotateY(-5deg);
+            transform: perspective(1500px) rotateY(-5deg);
+        }
+
+        .image-slant-left:hover {
+            -webkit-transform: perspective(1500px) rotateY(5deg);
+            -moz-transform: perspective(1500px) rotateY(5deg);
+            -ms-transform: perspective(1500px) rotateY(5deg);
+            transform: perspective(1500px) rotateY(5deg);
+        }
+
+        @media (max-width: 1024px) {
+
+            .image-slant-left,
+            .image-slant-right {
+                -webkit-transform: perspective(1500px) rotateY(0deg);
+                -moz-transform: perspective(1500px) rotateY(0deg);
+                -ms-transform: perspective(1500px) rotateY(0deg);
+                transform: perspective(1500px) rotateY(0deg);
+            }
+        }
+
+        .prose code::before {
+            content: "" !important;
+        }
+
+        .prose code::after {
+            content: "" !important;
+        }
+    </style>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://unpkg.com/@tailwindcss/typography@0.2.x/dist/typography.min.css" />
+</head>
+
+<body>
+    <main>
+        <div class="animate">
+            <div class="bg-white">
+                <header class="bg-pink-700">
+                    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Top">
+                        <div class="w-full py-3 flex items-center justify-between lg:border-none">
+                            <div class="flex items-center"><span class="text-sm sm:text-base  text-white hover:text-blue-50 font-bold tracking-wide">cdk-eventbridge-socket</span>
+                                <div class="hidden ml-10 space-x-8 lg:block"></div>
+                            </div>
+                            <div class="ml-10 space-x-4"><a href="https://github.com/boyney123/cdk-eventbridge-socket" class="inline-block bg-white py-2 px-4 border text-center border-transparent rounded-md text-xs sm:text-base font-medium text-blue-600 hover:bg-blue-50">View on GitHub</a></div>
+                        </div>
+                    </nav>
+                </header>
+                <div class="pt-8 bg-white">
+                    <div class="mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6">
+                        <div class="text-center">
+                            <h1 class="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl"><span class="block">Websockets with EventBridge</span></h1>
+                            <p class="max-w-md mt-8 mx-auto text-base text-gray-500 sm:text-lg mt-2 md:text-xl md:max-w-3xl">CDK Construct to setup a WebSocket for EventBridge in seconds.</p>
+                            <div class="sm:space-x-4 sm:flex sm:justify-center my-10 space-y-1 sm:space-y-0"></div>
+                        </div>
+                    </div>
+                    <div class="relative mt-10">
+                        <div class="absolute inset-0 flex flex-col" aria-hidden="true">
+                            <div class="flex-1"></div>
+                            <div class="flex-1 w-full bg-gray-800"></div>
+                        </div>
+                        <div class="max-w-7xl mx-auto px-4 sm:px-6"><img class="relative rounded-lg shadow-lg mx-auto" src="https://raw.githubusercontent.com/boyney123/cdk-eventbridge-socket/master/architecture.png?token=AAY53LPNR4TZABLYHRNE3Q3BEYB7O" data-aos="zoom-out" data-aos-offset="200" data-aos-duration="1000" /></div>
+                    </div>
+                </div>
+                <div class="py-12 bg-gray-800">
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div class="lg:text-center">
+                            <h2 class="text-base text-pink-600 font-semibold tracking-wide uppercase text-center">Features</h2>
+                        </div>
+                        <div class="mt-20 pb-20">
+                            <dl class="space-y-10 md:space-y-0 md:grid md:grid-cols-2 md:gap-x-8 md:gap-y-20">
+                                <div class="relative" data-aos="fade-up" data-aos-offset="100" data-aos-duration="1000" data-aos-delay="400.01">
+                                    <dt>
+                                        <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-pink-500 text-white"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6" aria-hidden="true">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path>
+                                            </svg></div>
+                                        <p class="ml-16 text-lg leading-6 font-medium text-gray-200">WebSocket</p>
+                                    </dt>
+                                    <dd class="mt-2 ml-16 text-base text-gray-400">Step into your events in real time using WebSockets.</dd>
+                                </div>
+                                <div class="relative" data-aos="fade-up" data-aos-offset="100" data-aos-duration="1000" data-aos-delay="401.01">
+                                    <dt>
+                                        <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-pink-500 text-white"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6" aria-hidden="true">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                            </svg></div>
+                                        <p class="ml-16 text-lg leading-6 font-medium text-gray-200">Custom Event Pattern</p>
+                                    </dt>
+                                    <dd class="mt-2 ml-16 text-base text-gray-400">You define what to listen for.</dd>
+                                </div>
+                                <div class="relative" data-aos="fade-up" data-aos-offset="100" data-aos-duration="1000" data-aos-delay="402.01">
+                                    <dt>
+                                        <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-pink-500 text-white"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6" aria-hidden="true">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                            </svg></div>
+                                        <p class="ml-16 text-lg leading-6 font-medium text-gray-200">Setup in seconds</p>
+                                    </dt>
+                                    <dd class="mt-2 ml-16 text-base text-gray-400">Easy to use construct, get up and running in seconds.</dd>
+                                </div>
+                                <div class="relative" data-aos="fade-up" data-aos-offset="100" data-aos-duration="1000" data-aos-delay="403.01">
+                                    <dt>
+                                        <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-pink-500 text-white"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6" aria-hidden="true">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path>
+                                            </svg></div>
+                                        <p class="ml-16 text-lg leading-6 font-medium text-gray-200">OpenSource</p>
+                                    </dt>
+                                    <dd class="mt-2 ml-16 text-base text-gray-400">Feel free to fork and contribute.</dd>
+                                </div>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative py-16 bg-white overflow-hidden" data-aos="fade-up" data-aos-offset="50" data-aos-duration="500" data-aos-delay="200">
+                    <div class="relative px-4 sm:px-6 lg:px-8">
+                        <div class="text-lg max-w-prose mx-auto">
+                            <h1><span class="mt-2 block text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">Why cdk-eventbridge-socket</span></h1>
+                        </div>
+                        <div class="mt-6 prose prose-indigo prose-lg text-gray-500 mx-auto ReactMarkdown" id="ReactMarkdown">
+                            <p>This is an AWS CDK Construct that will listen for any EventBridge Bus and Rule and forward that event through a websocket.</p>
+                            <p><strong>Get setup in seconds and as easy as 7 lines of code.</strong></p>
+                            <h3>Why</h3>
+                            <p>You may want to use tools like <a href="https://blog.postman.com/postman-supports-websocket-apis/">Postman Websockets</a> or <a href="https://github.com/vi/websocat">websocat</a> to see and debug what events are being fired through your event bus.</p>
+                            <h3>How</h3>
+                            <p>This uses AWS ApiGateway, DynamoDB (to store connections) and Lambda.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-100 overflow-hidden text-center py-20">
+                    <div class="lg:text-center ">
+                        <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-800 sm:text-4xl text-center ">Installation</p>
+                    </div>
+                    <div class=" max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+                        <div class="px-20 mx-auto">
+                            <pre style="color:#d4d4d4;font-size:13px;text-shadow:none;font-family:Menlo, Monaco, Consolas, &quot;Andale Mono&quot;, &quot;Ubuntu Mono&quot;, &quot;Courier New&quot;, monospace;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;padding:1em;margin:.5em 0;overflow:auto;background:#1e1e1e"><code class="language-bash" style="color:#d4d4d4;font-size:13px;text-shadow:none;font-family:Menlo, Monaco, Consolas, &quot;Andale Mono&quot;, &quot;Ubuntu Mono&quot;, &quot;Courier New&quot;, monospace;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none"><span><span class="linenumber react-syntax-highlighter-line-number" style="display:inline-block;min-width:1.25em;padding-right:1em;text-align:right;user-select:none;color:#6a9955">1</span><span class="token" style="color:#dcdcaa">npm</span><span> </span><span class="token" style="color:#dcdcaa">install</span><span> cdk-eventbridge-socket</span></span></code></pre>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-100 overflow-hidden text-center py-20">
+                    <div class="lg:text-center ">
+                        <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-800 sm:text-4xl text-center ">Example of use</p>
+                        <p class="mt-4 max-w-2xl center text-sm sm:text-lg text-gray-700 lg:mx-auto text-center">You can listen to any EventBridge source/pattern you like, just replace the eventPattern with what you want to listen too.</p>
+                    </div>
+                    <div class=" max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+                        <div class="px-20 mx-auto">
+                            <pre style="color:#d4d4d4;font-size:13px;text-shadow:none;font-family:Menlo, Monaco, Consolas, &quot;Andale Mono&quot;, &quot;Ubuntu Mono&quot;, &quot;Courier New&quot;, monospace;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;padding:1em;margin:.5em 0;overflow:auto;background:#1e1e1e"><code class="language-typescript" style="color:#9cdcfe;font-size:13px;text-shadow:none;font-family:Menlo, Monaco, Consolas, &quot;Andale Mono&quot;, &quot;Ubuntu Mono&quot;, &quot;Courier New&quot;, monospace;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none"><span><span class="linenumber react-syntax-highlighter-line-number" style="display:inline-block;min-width:3.25em;padding-right:1em;text-align:right;user-select:none;color:#6a9955">1</span><span class="token" style="color:#569CD6">import</span><span> </span><span class="token" style="color:#d4d4d4">*</span><span class="token"> </span><span class="token" style="color:#569CD6">as</span><span class="token"> cdk</span><span> </span><span class="token" style="color:#569CD6">from</span><span> </span><span class="token" style="color:#ce9178">&#x27;@aws-cdk/core&#x27;</span><span class="token" style="color:#d4d4d4">;</span><span>
+</span></span><span><span class="linenumber react-syntax-highlighter-line-number" style="display:inline-block;min-width:3.25em;padding-right:1em;text-align:right;user-select:none;color:#6a9955">2</span>
+</span><span><span class="linenumber react-syntax-highlighter-line-number" style="display:inline-block;min-width:3.25em;padding-right:1em;text-align:right;user-select:none;color:#6a9955">3</span><span></span><span class="token" style="color:#569CD6">import</span><span> </span><span class="token" style="color:#d4d4d4">{</span><span class="token"> </span><span class="token" style="color:#9cdcfe">EventBridgeWebSocket</span><span class="token"> </span><span class="token" style="color:#d4d4d4">}</span><span> </span><span class="token" style="color:#569CD6">from</span><span> </span><span class="token" style="color:#ce9178">&#x27;cdk-eventbridge-socket&#x27;</span><span class="token" style="color:#d4d4d4">;</span><span>
+</span></span><span><span class="linenumber react-syntax-highlighter-line-number" style="display:inline-block;min-width:3.25em;padding-right:1em;text-align:right;user-select:none;color:#6a9955">4</span>
+</span><span><span class="linenumber react-syntax-highlighter-line-number" style="display:inline-block;min-width:3.25em;padding-right:1em;text-align:right;user-select:none;color:#6a9955">5</span><span></span><span class="token" style="color:#569CD6">export</span><span> </span><span class="token" style="color:#569CD6">class</span><span> </span><span class="token" style="color:#4ec9b0">EventbridgeWebhooksStack</span><span> </span><span class="token" style="color:#569CD6">extends</span><span> </span><span class="token" style="color:#4ec9b0">cdk</span><span class="token" style="color:#d4d4d4">.</span><span class="token property-access" style="color:#4ec9b0">Stack</span><span> </span><span class="token" style="color:#d4d4d4">{</span><span>
+</span></span><span><span class="linenumber react-syntax-highlighter-line-number" style="display:inline-block;min-width:3.25em;padding-right:1em;text-align:right;user-select:none;color:#6a9955">6</span><span>  </span><span class="token" style="color:#569CD6">constructor</span><span class="token" style="color:#d4d4d4">(</span><span>scope</span><span class="token" style="color:#d4d4d4">:</span><span> cdk</span><span class="token" style="color:#d4d4d4">.</span><span class="token property-access" style="color:#4ec9b0">App</span><span class="token" style="color:#d4d4d4">,</span><span> id</span><span class="token" style="color:#d4d4d4">:</span><span> </span><span class="token" style="color:#ce9178">string</span><span class="token" style="color:#d4d4d4">,</span><span> props</span><span class="token" style="color:#d4d4d4">?</span><span class="token" style="color:#d4d4d4">:</span><span> cdk</span><span class="token" style="color:#d4d4d4">.</span><span class="token property-access" style="color:#4ec9b0">StackProps</span><span class="token" style="color:#d4d4d4">)</span><span> </span><span class="token" style="color:#d4d4d4">{</span><span>
+</span></span><span><span class="linenumber react-syntax-highlighter-line-number" style="display:inline-block;min-width:3.25em;padding-right:1em;text-align:right;user-select:none;color:#6a9955">7</span><span>    </span><span class="token" style="color:#569CD6">super</span><span class="token" style="color:#d4d4d4">(</span><span>scope</span><span class="token" style="color:#d4d4d4">,</span><span> id</span><span class="token" style="color:#d4d4d4">,</span><span> props</span><span class="token" style="color:#d4d4d4">)</span><span class="token" style="color:#d4d4d4">;</span><span>
+</span></span><span><span class="linenumber react-syntax-highlighter-line-number" style="display:inline-block;min-width:3.25em;padding-right:1em;text-align:right;user-select:none;color:#6a9955">8</span>
+</span><span><span class="linenumber react-syntax-highlighter-line-number" style="display:inline-block;min-width:3.25em;padding-right:1em;text-align:right;user-select:none;color:#6a9955">9</span><span>    </span><span class="token" style="color:#569CD6">new</span><span> </span><span class="token" style="color:#4ec9b0">EventBridgeWebSocket</span><span class="token" style="color:#d4d4d4">(</span><span class="token" style="color:#569CD6">this</span><span class="token" style="color:#d4d4d4">,</span><span> </span><span class="token" style="color:#ce9178">&#x27;sockets&#x27;</span><span class="token" style="color:#d4d4d4">,</span><span> </span><span class="token" style="color:#d4d4d4">{</span><span>
+</span></span><span><span class="linenumber react-syntax-highlighter-line-number" style="display:inline-block;min-width:3.25em;padding-right:1em;text-align:right;user-select:none;color:#6a9955">10</span><span>      bus</span><span class="token" style="color:#d4d4d4">:</span><span> </span><span class="token" style="color:#ce9178">&#x27;your-event-bus-name&#x27;</span><span class="token" style="color:#d4d4d4">,</span><span>
+</span></span><span><span class="linenumber react-syntax-highlighter-line-number" style="display:inline-block;min-width:3.25em;padding-right:1em;text-align:right;user-select:none;color:#6a9955">11</span>
+</span><span><span class="linenumber react-syntax-highlighter-line-number" style="display:inline-block;min-width:3.25em;padding-right:1em;text-align:right;user-select:none;color:#6a9955">12</span><span>      </span><span class="token" style="color:#6a9955">// This example shows how to listen for all events</span><span>
+</span></span><span><span class="linenumber react-syntax-highlighter-line-number" style="display:inline-block;min-width:3.25em;padding-right:1em;text-align:right;user-select:none;color:#6a9955">13</span><span>      eventPattern</span><span class="token" style="color:#d4d4d4">:</span><span> </span><span class="token" style="color:#d4d4d4">{</span><span>
+</span></span><span><span class="linenumber react-syntax-highlighter-line-number" style="display:inline-block;min-width:3.25em;padding-right:1em;text-align:right;user-select:none;color:#6a9955">14</span><span>        account</span><span class="token" style="color:#d4d4d4">:</span><span> </span><span class="token" style="color:#d4d4d4">[</span><span class="token" style="color:#ce9178">&#x27;your_account_id&#x27;</span><span class="token" style="color:#d4d4d4">]</span><span class="token" style="color:#d4d4d4">,</span><span>
+</span></span><span><span class="linenumber react-syntax-highlighter-line-number" style="display:inline-block;min-width:3.25em;padding-right:1em;text-align:right;user-select:none;color:#6a9955">15</span><span>      </span><span class="token" style="color:#d4d4d4">}</span><span class="token" style="color:#d4d4d4">,</span><span>
+</span></span><span><span class="linenumber react-syntax-highlighter-line-number" style="display:inline-block;min-width:3.25em;padding-right:1em;text-align:right;user-select:none;color:#6a9955">16</span><span>      stage</span><span class="token" style="color:#d4d4d4">:</span><span> </span><span class="token" style="color:#ce9178">&#x27;dev&#x27;</span><span class="token" style="color:#d4d4d4">,</span><span>
+</span></span><span><span class="linenumber react-syntax-highlighter-line-number" style="display:inline-block;min-width:3.25em;padding-right:1em;text-align:right;user-select:none;color:#6a9955">17</span><span>    </span><span class="token" style="color:#d4d4d4">}</span><span class="token" style="color:#d4d4d4">)</span><span class="token" style="color:#d4d4d4">;</span><span>
+</span></span><span><span class="linenumber react-syntax-highlighter-line-number" style="display:inline-block;min-width:3.25em;padding-right:1em;text-align:right;user-select:none;color:#6a9955">18</span><span>  </span><span class="token" style="color:#d4d4d4">}</span><span>
+</span></span><span><span class="linenumber react-syntax-highlighter-line-number" style="display:inline-block;min-width:3.25em;padding-right:1em;text-align:right;user-select:none;color:#6a9955">19</span><span></span><span class="token" style="color:#d4d4d4">}</span></span></code></pre>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-pink-800">
+                    <div class="max-w-7xl mx-auto py-12 px-4 sm:py-16 sm:px-6 lg:px-8 lg:py-20">
+                        <div class="max-w-4xl mx-auto text-center">
+                            <h2 class="text-3xl font-extrabold text-white sm:text-4xl">cdk-eventbridge-socket</h2>
+                            <p class="mt-3 text-xl text-pink-200 sm:mt-4 mb-8">CDK construct</p>
+                        </div>
+                        <dl class="text-center sm:max-w-3xl sm:mx-auto sm:grid sm:grid-cols-3 sm:gap-8">
+                            <div class="flex flex-col" data-aos="flip-left" data-aos-offset="100" data-aos-duration="1000" data-aos-delay="200">
+                                <dt class="order-2 mt-2 text-lg leading-6 font-medium text-pink-200 mb-10 sm:mb-0">Open Source</dt>
+                                <dd class="order-1 text-4xl sm:text-5xl font-extrabold text-white">100%</dd>
+                            </div>
+                            <div class="flex flex-col" data-aos="flip-left" data-aos-offset="100" data-aos-duration="1000" data-aos-delay="350">
+                                <dt class="order-2 mt-2 text-lg leading-6 font-medium text-pink-200 mb-10 sm:mb-0">Setup in seconds</dt>
+                                <dd class="order-1 text-4xl sm:text-5xl font-extrabold text-white">10s</dd>
+                            </div>
+                            <div class="flex flex-col" data-aos="flip-left" data-aos-offset="100" data-aos-duration="1000" data-aos-delay="500">
+                                <dt class="order-2 mt-2 text-lg leading-6 font-medium text-pink-200 mb-10 sm:mb-0">Customise what to listen for</dt>
+                                <dd class="order-1 text-4xl sm:text-5xl font-extrabold text-white">Pattern</dd>
+                            </div>
+                        </dl>
+                    </div>
+                </div>
+                <div class="bg-gray-800">
+                    <div class="max-w-4xl flex items-center h-auto py-20 flex-wrap mx-auto lg:my-0 ">
+                        <div id="profile" class="w-full lg:w-3/5 rounded-lg lg:rounded-l-lg lg:rounded-r-none shadow-2xl bg-white mx-6 lg:mx-0" data-aos="fade-up" data-aos-offset="100" data-aos-duration="450" data-aos-delay="100">
+                            <div class="p-4 md:p-12 text-center lg:text-left">
+                                <div class="block lg:hidden rounded-full shadow-xl mx-auto -mt-16 h-48 w-48 bg-cover bg-center"><img src="https://avatars.githubusercontent.com/u/3268013?u=b13fa1f618dafe5c250289d4c0cb4b10dbe6c7bc&amp;v=4" class=" rounded-none lg:rounded-lg shadow-2xl lg:block rounded-full" /></div>
+                                <h1 class="text-3xl font-bold pt-8 lg:pt-0">David Boyne</h1>
+                                <div class="mx-auto lg:mx-0 w-4/5 pt-3 border-b-2 border-green-500 opacity-25"></div>
+                                <p class="pt-4 text-base font-bold flex items-center justify-center lg:justify-start">Creator of Gitpages</p>
+                                <p class="pt-8 text-sm">Love building open source tools • Currently building tools for Event Architectures • Share what I learn along the way #Serverless #JavaScript</p>
+                                <div class="pb-4 lg:pb-0 w-4/5 lg:w-full mx-auto flex flex-wrap items-center justify-center lg:justify-start space-x-4 mt-8"><a class="link" href="https://twitter.com/boyney123" data-tippy-content="@twitter_handle"><svg class="h-6 fill-current text-gray-600 hover:text-green-700" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <title>Twitter</title>
+                                            <path d="M23.954 4.569c-.885.389-1.83.654-2.825.775 1.014-.611 1.794-1.574 2.163-2.723-.951.555-2.005.959-3.127 1.184-.896-.959-2.173-1.559-3.591-1.559-2.717 0-4.92 2.203-4.92 4.917 0 .39.045.765.127 1.124C7.691 8.094 4.066 6.13 1.64 3.161c-.427.722-.666 1.561-.666 2.475 0 1.71.87 3.213 2.188 4.096-.807-.026-1.566-.248-2.228-.616v.061c0 2.385 1.693 4.374 3.946 4.827-.413.111-.849.171-1.296.171-.314 0-.615-.03-.916-.086.631 1.953 2.445 3.377 4.604 3.417-1.68 1.319-3.809 2.105-6.102 2.105-.39 0-.779-.023-1.17-.067 2.189 1.394 4.768 2.209 7.557 2.209 9.054 0 13.999-7.496 13.999-13.986 0-.209 0-.42-.015-.63.961-.689 1.8-1.56 2.46-2.548l-.047-.02z"></path>
+                                        </svg></a><a class="link" href="https://github.com/boyney123" data-tippy-content="@github_handle"><svg class="h-6 fill-current text-gray-600 hover:text-green-700" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <title>GitHub</title>
+                                            <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path>
+                                        </svg></a></div>
+                            </div>
+                        </div>
+                        <div class="w-full lg:w-2/5 -ml-4 z-10 " data-aos="fade-up" data-aos-offset="100" data-aos-duration="450" data-aos-delay="400"><img src="https://avatars.githubusercontent.com/u/3268013?u=b13fa1f618dafe5c250289d4c0cb4b10dbe6c7bc&amp;v=4" class=" rounded-none lg:rounded-lg shadow-2xl hidden lg:block" /></div>
+                    </div>
+                </div>
+                <footer class="bg-white">
+                    <div class="max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
+                        <nav class="-mx-5 -my-2 flex flex-wrap justify-center" aria-label="Footer"></nav>
+                        <div class="mt-8 flex justify-center space-x-6"><a href="https://github.com/boyney123" class="text-gray-400 hover:text-gray-500"><svg fill="currentColor" viewBox="0 0 24 24" class="h-6 w-6">
+                                    <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path>
+                                </svg></a><a href="https://twitter.com/boyney123" class="text-gray-400 hover:text-gray-500"><svg fill="currentColor" viewBox="0 0 24 24" class="h-6 w-6">
+                                    <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path>
+                                </svg></a></div>
+                        <p class="mt-8 text-center text-base text-gray-400">cdk-eventbridge-socket</p>
+                    </div>
+                </footer>
+            </div>
+        </div>
+    </main>
+</body>
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="text/javascript">
+    AOS.init({
+        once: true
+    });
+</script>
+<script type="text/javascript">
+    window.addEventListener('load', (event) => {
+        document.querySelectorAll("[data-js='copy-code']").forEach(code =>
+            code.addEventListener("click", (event) => {
+                const content = event.target.closest('div').textContent;
+                navigator.clipboard.writeText(content);
+            })
+        )
+
+        document.querySelectorAll("[data-js='copy-button']").forEach(button =>
+            button.addEventListener("click", (event) => {
+                const content = event.target.closest("[data-js='copy-button-value']").textContent;
+                navigator.clipboard.writeText(content);
+            })
+        )
+    });
+</script>
+
+</html>
