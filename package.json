@@ -42,7 +42,8 @@
     "aws",
     "cdk",
     "eventbridge",
-    "sockets"
+    "sockets",
+    "awscdk"
   ],
   "author": "David Boyne",
   "license": "MIT",
