@@ -25,8 +25,6 @@ export class EventBridgeWebSocket extends Construct {
     const tableName = `${id}-connections-table`;
     const name = id + '-api';
 
-    //TODO: config: stageName (dev/stg/prd)
-
     /**
      * API Gateway (Websocket API)
      */
