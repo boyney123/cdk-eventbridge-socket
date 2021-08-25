@@ -1,4 +1,4 @@
-# cdk-eventbridge-socket
+# [cdk-eventbridge-socket](https://boyney123.github.io/cdk-eventbridge-socket/)
 
 This is an AWS CDK Construct that will listen for any EventBridge Bus and Rule and forward that event through a websocket.
 
