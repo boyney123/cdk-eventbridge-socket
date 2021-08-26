@@ -49,6 +49,6 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/boyney123/cdk-eventbridge-socket-test.git"
+    "url": "https://github.com/boyney123/cdk-eventbridge-socket.git"
   }
 }
