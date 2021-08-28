@@ -1,8 +1,9 @@
+import { WebSocketApi, WebSocketStage } from '@aws-cdk/aws-apigatewayv2';
+import { LambdaWebSocketIntegration } from '@aws-cdk/aws-apigatewayv2-integrations';
 import { AttributeType, Table } from '@aws-cdk/aws-dynamodb';
-import { CfnApi, CfnIntegration, CfnRoute, CfnDeployment, CfnStage } from '@aws-cdk/aws-apigatewayv2';
-import { Construct, RemovalPolicy, CfnOutput, Duration, ConcreteDependable, Stack } from '@aws-cdk/core';
+import { Construct, RemovalPolicy, CfnOutput, Duration, Stack } from '@aws-cdk/core';
 import { Function, AssetCode, Runtime } from '@aws-cdk/aws-lambda';
-import { PolicyStatement, Effect, ServicePrincipal, Role } from '@aws-cdk/aws-iam';
+import { PolicyStatement, Effect } from '@aws-cdk/aws-iam';
 import { EventBus, Rule, EventPattern } from '@aws-cdk/aws-events';
 import { LambdaFunction } from '@aws-cdk/aws-events-targets';
 
@@ -28,10 +29,8 @@ export class EventBridgeWebSocket extends Construct {
     /**
      * API Gateway (Websocket API)
      */
-    const api = new CfnApi(this, name, {
-      name: 'EventBridgeSockets',
-      protocolType: 'WEBSOCKET',
-      routeSelectionExpression: '$request.body.action',
+     const api = new WebSocketApi(this, name, {
+      apiName: 'EventBridgeSockets',
     });
 
     /**
@@ -54,73 +53,35 @@ export class EventBridgeWebSocket extends Construct {
     const connectFunc = this.createFunction('on-connect', tableName);
     const disconnectFunc = this.createFunction('on-disconnect', tableName);
     const eventBridgeBrokerFunc = this.createFunction('eventbridge-broker', tableName, {
-      initialPolicy: [
-        new PolicyStatement({
-          actions: ['execute-api:ManageConnections'],
-          resources: ['arn:aws:execute-api:' + region + ':' + accountId + ':' + api.ref + '/*'],
-          effect: Effect.ALLOW,
-        }),
-      ],
-      environment: {
-        TABLE_NAME: tableName,
-        WEBSOCKET_API: `${api.attrApiEndpoint}/${stage}`,
-      },
-    });
+        initialPolicy: [
+          new PolicyStatement({
+            actions: ['execute-api:ManageConnections'],
+            resources: [`arn:aws:execute-api:${region}:${accountId}:${api.apiId}/*`],
+            effect: Effect.ALLOW,
+          }),
+        ],
+        environment: {
+          TABLE_NAME: tableName,
+          WEBSOCKET_API: `${api.apiEndpoint}/${stage}`,
+        },
+      });
 
     table.grantReadWriteData(connectFunc);
     table.grantReadWriteData(disconnectFunc);
     table.grantReadWriteData(eventBridgeBrokerFunc);
 
-    const policy = new PolicyStatement({
-      effect: Effect.ALLOW,
-      resources: [connectFunc.functionArn, disconnectFunc.functionArn, eventBridgeBrokerFunc.functionArn],
-      actions: ['lambda:InvokeFunction'],
-    });
-
-    const role = new Role(this, `${name}-iam-role`, {
-      assumedBy: new ServicePrincipal('apigateway.amazonaws.com'),
-    });
-
-    role.addToPolicy(policy);
-
-    const connectIntegration = new CfnIntegration(this, 'connect-lambda-integration', {
-      apiId: api.ref,
-      integrationType: 'AWS_PROXY',
-      integrationUri: 'arn:aws:apigateway:' + region + ':lambda:path/2015-03-31/functions/' + connectFunc.functionArn + '/invocations',
-      credentialsArn: role.roleArn,
-    });
-
-    const disconnectIntegration = new CfnIntegration(this, 'disconnect-lambda-integration', {
-      apiId: api.ref,
-      integrationType: 'AWS_PROXY',
-      integrationUri: 'arn:aws:apigateway:' + region + ':lambda:path/2015-03-31/functions/' + disconnectFunc.functionArn + '/invocations',
-      credentialsArn: role.roleArn,
-    });
-
     // create routes for API Gateway
-    const connectRoute = new CfnRoute(this, 'connect-route', {
-      apiId: api.ref,
-      routeKey: '$connect',
-      authorizationType: 'NONE',
-      target: 'integrations/' + connectIntegration.ref,
+    api.addRoute('$connect', {
+      integration: new LambdaWebSocketIntegration({ handler: connectFunc }),
+    });
+    api.addRoute('$disconnect', {
+      integration: new LambdaWebSocketIntegration({ handler: disconnectFunc }),
     });
 
-    const disconnectRoute = new CfnRoute(this, 'disconnect-route', {
-      apiId: api.ref,
-      routeKey: '$disconnect',
-      authorizationType: 'NONE',
-      target: 'integrations/' + disconnectIntegration.ref,
-    });
-
-    const deployment = new CfnDeployment(this, `${name}-deployment`, {
-      apiId: api.ref,
-    });
-
-    new CfnStage(this, `${name}-stage`, {
-      apiId: api.ref,
+    new WebSocketStage(this, `${name}-stage`, {
       autoDeploy: true,
-      deploymentId: deployment.ref,
       stageName: stage,
+      webSocketApi: api,
     });
 
     /**
@@ -133,12 +94,7 @@ export class EventBridgeWebSocket extends Construct {
       targets: [new LambdaFunction(eventBridgeBrokerFunc)],
     });
 
-    const dependencies = new ConcreteDependable();
-    dependencies.add(connectRoute);
-    dependencies.add(disconnectRoute);
-    deployment.node.addDependency(dependencies);
-
-    new CfnOutput(this, 'Websocket endpoint', { value: `${api.attrApiEndpoint}/${config?.stage}` });
+    new CfnOutput(this, 'Websocket endpoint', { value: `${api.apiEndpoint}/${config?.stage}` });
   }
 
   private createFunction(name: string, tableName: string, options: any = {}) {

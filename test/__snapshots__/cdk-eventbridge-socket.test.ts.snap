@@ -3,58 +3,58 @@
 exports[`EventBridgeWebSocket snapshot test EventsRuleToSns default params 1`] = `
 Object {
   "Outputs": Object {
-    "eventBridgeSocketDeployWebsocketendpoint28D17986A": Object {
+    "eventBridgeSocketDeployWebsocketendpoint7B865CDA": Object {
       "Value": Object {
-        "Fn::GetAtt": Array [
-          "eventBridgeSocketDeployeventBridgeSocketDeployapi37537039",
-          "ApiEndpoint",
-        ],
-      },
-    },
-    "eventBridgeSocketDeployWebsocketendpoint7445F87B": Object {
-      "Value": Object {
-        "Fn::GetAtt": Array [
-          "eventBridgeSocketDeployeventBridgeSocketDeployapi37537039",
-          "ApiEndpoint",
+        "Fn::Join": Array [
+          "",
+          Array [
+            Object {
+              "Fn::GetAtt": Array [
+                "eventBridgeSocketDeployeventBridgeSocketDeployapiA13E2D47",
+                "ApiEndpoint",
+              ],
+            },
+            "/dev",
+          ],
         ],
       },
     },
   },
   "Parameters": Object {
-    "AssetParameters107a2b438ef0db7e4de3748b00497e5f7a514076db640c8337ebf0eaa07750c8ArtifactHash4F3181F1": Object {
-      "Description": "Artifact hash for asset \\"107a2b438ef0db7e4de3748b00497e5f7a514076db640c8337ebf0eaa07750c8\\"",
+    "AssetParameters189f2c91281e177eada2df4ac00eb351945e4c57f6d22baffa28e6838cf9d8f4ArtifactHashEE784EBF": Object {
+      "Description": "Artifact hash for asset \\"189f2c91281e177eada2df4ac00eb351945e4c57f6d22baffa28e6838cf9d8f4\\"",
       "Type": "String",
     },
-    "AssetParameters107a2b438ef0db7e4de3748b00497e5f7a514076db640c8337ebf0eaa07750c8S3Bucket38874978": Object {
-      "Description": "S3 bucket for asset \\"107a2b438ef0db7e4de3748b00497e5f7a514076db640c8337ebf0eaa07750c8\\"",
+    "AssetParameters189f2c91281e177eada2df4ac00eb351945e4c57f6d22baffa28e6838cf9d8f4S3Bucket210A09A6": Object {
+      "Description": "S3 bucket for asset \\"189f2c91281e177eada2df4ac00eb351945e4c57f6d22baffa28e6838cf9d8f4\\"",
       "Type": "String",
     },
-    "AssetParameters107a2b438ef0db7e4de3748b00497e5f7a514076db640c8337ebf0eaa07750c8S3VersionKey1400C6B5": Object {
-      "Description": "S3 key for asset version \\"107a2b438ef0db7e4de3748b00497e5f7a514076db640c8337ebf0eaa07750c8\\"",
+    "AssetParameters189f2c91281e177eada2df4ac00eb351945e4c57f6d22baffa28e6838cf9d8f4S3VersionKey996026C1": Object {
+      "Description": "S3 key for asset version \\"189f2c91281e177eada2df4ac00eb351945e4c57f6d22baffa28e6838cf9d8f4\\"",
       "Type": "String",
     },
-    "AssetParameters37281412a403bda1bfbe1e2e98feba0457b05e53b3a3f2f7740dacc4d345bc0aArtifactHash4C986C52": Object {
-      "Description": "Artifact hash for asset \\"37281412a403bda1bfbe1e2e98feba0457b05e53b3a3f2f7740dacc4d345bc0a\\"",
+    "AssetParameters58b44f089530a411338be00d6a42306e54315ad4296be77451fa81c7742b2a9aArtifactHash85421036": Object {
+      "Description": "Artifact hash for asset \\"58b44f089530a411338be00d6a42306e54315ad4296be77451fa81c7742b2a9a\\"",
       "Type": "String",
     },
-    "AssetParameters37281412a403bda1bfbe1e2e98feba0457b05e53b3a3f2f7740dacc4d345bc0aS3Bucket331D4331": Object {
-      "Description": "S3 bucket for asset \\"37281412a403bda1bfbe1e2e98feba0457b05e53b3a3f2f7740dacc4d345bc0a\\"",
+    "AssetParameters58b44f089530a411338be00d6a42306e54315ad4296be77451fa81c7742b2a9aS3Bucket18FBAF40": Object {
+      "Description": "S3 bucket for asset \\"58b44f089530a411338be00d6a42306e54315ad4296be77451fa81c7742b2a9a\\"",
       "Type": "String",
     },
-    "AssetParameters37281412a403bda1bfbe1e2e98feba0457b05e53b3a3f2f7740dacc4d345bc0aS3VersionKeyE02751CD": Object {
-      "Description": "S3 key for asset version \\"37281412a403bda1bfbe1e2e98feba0457b05e53b3a3f2f7740dacc4d345bc0a\\"",
+    "AssetParameters58b44f089530a411338be00d6a42306e54315ad4296be77451fa81c7742b2a9aS3VersionKey5C07FCF9": Object {
+      "Description": "S3 key for asset version \\"58b44f089530a411338be00d6a42306e54315ad4296be77451fa81c7742b2a9a\\"",
       "Type": "String",
     },
-    "AssetParameters64f97fd8adc4902cec9172b17a0460ffd30253460af4102970b45fb06bf7c9fbArtifactHashA8183BB3": Object {
-      "Description": "Artifact hash for asset \\"64f97fd8adc4902cec9172b17a0460ffd30253460af4102970b45fb06bf7c9fb\\"",
+    "AssetParametersa6c413ff98ccb54bd991dedcc0fab2635afc75162f4f3b980e2906d1e87d802aArtifactHash2B2A4443": Object {
+      "Description": "Artifact hash for asset \\"a6c413ff98ccb54bd991dedcc0fab2635afc75162f4f3b980e2906d1e87d802a\\"",
       "Type": "String",
     },
-    "AssetParameters64f97fd8adc4902cec9172b17a0460ffd30253460af4102970b45fb06bf7c9fbS3BucketC060F8AB": Object {
-      "Description": "S3 bucket for asset \\"64f97fd8adc4902cec9172b17a0460ffd30253460af4102970b45fb06bf7c9fb\\"",
+    "AssetParametersa6c413ff98ccb54bd991dedcc0fab2635afc75162f4f3b980e2906d1e87d802aS3BucketE6FA6158": Object {
+      "Description": "S3 bucket for asset \\"a6c413ff98ccb54bd991dedcc0fab2635afc75162f4f3b980e2906d1e87d802a\\"",
       "Type": "String",
     },
-    "AssetParameters64f97fd8adc4902cec9172b17a0460ffd30253460af4102970b45fb06bf7c9fbS3VersionKey669E1467": Object {
-      "Description": "S3 key for asset version \\"64f97fd8adc4902cec9172b17a0460ffd30253460af4102970b45fb06bf7c9fb\\"",
+    "AssetParametersa6c413ff98ccb54bd991dedcc0fab2635afc75162f4f3b980e2906d1e87d802aS3VersionKey824648E8": Object {
+      "Description": "S3 key for asset version \\"a6c413ff98ccb54bd991dedcc0fab2635afc75162f4f3b980e2906d1e87d802a\\"",
       "Type": "String",
     },
   },
@@ -101,23 +101,49 @@ Object {
       },
       "Type": "AWS::Lambda::Permission",
     },
-    "eventBridgeSocketDeployconnectlambdaintegrationA9D7FA28": Object {
+    "eventBridgeSocketDeployeventBridgeSocketDeployapiA13E2D47": Object {
+      "Properties": Object {
+        "Name": "EventBridgeSockets",
+        "ProtocolType": "WEBSOCKET",
+        "RouteSelectionExpression": "$request.body.action",
+      },
+      "Type": "AWS::ApiGatewayV2::Api",
+    },
+    "eventBridgeSocketDeployeventBridgeSocketDeployapiconnectRoute308BAAC5": Object {
       "Properties": Object {
         "ApiId": Object {
-          "Ref": "eventBridgeSocketDeployeventBridgeSocketDeployapi37537039",
+          "Ref": "eventBridgeSocketDeployeventBridgeSocketDeployapiA13E2D47",
         },
-        "CredentialsArn": Object {
-          "Fn::GetAtt": Array [
-            "eventBridgeSocketDeployeventBridgeSocketDeployapiiamrole5B0A9275",
-            "Arn",
+        "RouteKey": "$connect",
+        "Target": Object {
+          "Fn::Join": Array [
+            "",
+            Array [
+              "integrations/",
+              Object {
+                "Ref": "eventBridgeSocketDeployeventBridgeSocketDeployapiconnectRouteWebSocketIntegration449f455cb3c7748381eb0f0246ccfa2f05649A15",
+              },
+            ],
           ],
+        },
+      },
+      "Type": "AWS::ApiGatewayV2::Route",
+    },
+    "eventBridgeSocketDeployeventBridgeSocketDeployapiconnectRouteWebSocketIntegration449f455cb3c7748381eb0f0246ccfa2f05649A15": Object {
+      "Properties": Object {
+        "ApiId": Object {
+          "Ref": "eventBridgeSocketDeployeventBridgeSocketDeployapiA13E2D47",
         },
         "IntegrationType": "AWS_PROXY",
         "IntegrationUri": Object {
           "Fn::Join": Array [
             "",
             Array [
-              "arn:aws:apigateway:",
+              "arn:",
+              Object {
+                "Ref": "AWS::Partition",
+              },
+              ":apigateway:",
               Object {
                 "Ref": "AWS::Region",
               },
@@ -135,20 +161,56 @@ Object {
       },
       "Type": "AWS::ApiGatewayV2::Integration",
     },
-    "eventBridgeSocketDeployconnectrouteE4B2A96E": Object {
+    "eventBridgeSocketDeployeventBridgeSocketDeployapiconnectRouteeventBridgeSocketDeployeventBridgeSocketDeployapiconnectRoute969E1C59PermissionE0DAFB7C": Object {
+      "Properties": Object {
+        "Action": "lambda:InvokeFunction",
+        "FunctionName": Object {
+          "Fn::GetAtt": Array [
+            "eventBridgeSocketDeployonconnectAE0ACD17",
+            "Arn",
+          ],
+        },
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": Object {
+          "Fn::Join": Array [
+            "",
+            Array [
+              "arn:",
+              Object {
+                "Ref": "AWS::Partition",
+              },
+              ":execute-api:",
+              Object {
+                "Ref": "AWS::Region",
+              },
+              ":",
+              Object {
+                "Ref": "AWS::AccountId",
+              },
+              ":",
+              Object {
+                "Ref": "eventBridgeSocketDeployeventBridgeSocketDeployapiA13E2D47",
+              },
+              "/*/*$connect",
+            ],
+          ],
+        },
+      },
+      "Type": "AWS::Lambda::Permission",
+    },
+    "eventBridgeSocketDeployeventBridgeSocketDeployapidisconnectRoute5AA2FBC6": Object {
       "Properties": Object {
         "ApiId": Object {
-          "Ref": "eventBridgeSocketDeployeventBridgeSocketDeployapi37537039",
+          "Ref": "eventBridgeSocketDeployeventBridgeSocketDeployapiA13E2D47",
         },
-        "AuthorizationType": "NONE",
-        "RouteKey": "$connect",
+        "RouteKey": "$disconnect",
         "Target": Object {
           "Fn::Join": Array [
             "",
             Array [
               "integrations/",
               Object {
-                "Ref": "eventBridgeSocketDeployconnectlambdaintegrationA9D7FA28",
+                "Ref": "eventBridgeSocketDeployeventBridgeSocketDeployapidisconnectRouteWebSocketIntegration0a84f9265d12d31c9984b952fd3b77202D79D90F",
               },
             ],
           ],
@@ -156,23 +218,21 @@ Object {
       },
       "Type": "AWS::ApiGatewayV2::Route",
     },
-    "eventBridgeSocketDeploydisconnectlambdaintegration96C39EB8": Object {
+    "eventBridgeSocketDeployeventBridgeSocketDeployapidisconnectRouteWebSocketIntegration0a84f9265d12d31c9984b952fd3b77202D79D90F": Object {
       "Properties": Object {
         "ApiId": Object {
-          "Ref": "eventBridgeSocketDeployeventBridgeSocketDeployapi37537039",
-        },
-        "CredentialsArn": Object {
-          "Fn::GetAtt": Array [
-            "eventBridgeSocketDeployeventBridgeSocketDeployapiiamrole5B0A9275",
-            "Arn",
-          ],
+          "Ref": "eventBridgeSocketDeployeventBridgeSocketDeployapiA13E2D47",
         },
         "IntegrationType": "AWS_PROXY",
         "IntegrationUri": Object {
           "Fn::Join": Array [
             "",
             Array [
-              "arn:aws:apigateway:",
+              "arn:",
+              Object {
+                "Ref": "AWS::Partition",
+              },
+              ":apigateway:",
               Object {
                 "Ref": "AWS::Region",
               },
@@ -190,113 +250,49 @@ Object {
       },
       "Type": "AWS::ApiGatewayV2::Integration",
     },
-    "eventBridgeSocketDeploydisconnectroute371DB6DD": Object {
+    "eventBridgeSocketDeployeventBridgeSocketDeployapidisconnectRouteeventBridgeSocketDeployeventBridgeSocketDeployapidisconnectRoute1F6837D8Permission67DA007B": Object {
       "Properties": Object {
-        "ApiId": Object {
-          "Ref": "eventBridgeSocketDeployeventBridgeSocketDeployapi37537039",
+        "Action": "lambda:InvokeFunction",
+        "FunctionName": Object {
+          "Fn::GetAtt": Array [
+            "eventBridgeSocketDeployondisconnect0F61A161",
+            "Arn",
+          ],
         },
-        "AuthorizationType": "NONE",
-        "RouteKey": "$disconnect",
-        "Target": Object {
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": Object {
           "Fn::Join": Array [
             "",
             Array [
-              "integrations/",
+              "arn:",
               Object {
-                "Ref": "eventBridgeSocketDeploydisconnectlambdaintegration96C39EB8",
+                "Ref": "AWS::Partition",
               },
+              ":execute-api:",
+              Object {
+                "Ref": "AWS::Region",
+              },
+              ":",
+              Object {
+                "Ref": "AWS::AccountId",
+              },
+              ":",
+              Object {
+                "Ref": "eventBridgeSocketDeployeventBridgeSocketDeployapiA13E2D47",
+              },
+              "/*/*$disconnect",
             ],
           ],
         },
       },
-      "Type": "AWS::ApiGatewayV2::Route",
+      "Type": "AWS::Lambda::Permission",
     },
-    "eventBridgeSocketDeployeventBridgeSocketDeployapi37537039": Object {
-      "Properties": Object {
-        "Name": "EventBridgeSockets",
-        "ProtocolType": "WEBSOCKET",
-        "RouteSelectionExpression": "$request.body.action",
-      },
-      "Type": "AWS::ApiGatewayV2::Api",
-    },
-    "eventBridgeSocketDeployeventBridgeSocketDeployapideploymentBB543A98": Object {
-      "DependsOn": Array [
-        "eventBridgeSocketDeployconnectrouteE4B2A96E",
-        "eventBridgeSocketDeploydisconnectroute371DB6DD",
-      ],
+    "eventBridgeSocketDeployeventBridgeSocketDeployapistage6E463CF6": Object {
       "Properties": Object {
         "ApiId": Object {
-          "Ref": "eventBridgeSocketDeployeventBridgeSocketDeployapi37537039",
-        },
-      },
-      "Type": "AWS::ApiGatewayV2::Deployment",
-    },
-    "eventBridgeSocketDeployeventBridgeSocketDeployapiiamrole5B0A9275": Object {
-      "Properties": Object {
-        "AssumeRolePolicyDocument": Object {
-          "Statement": Array [
-            Object {
-              "Action": "sts:AssumeRole",
-              "Effect": "Allow",
-              "Principal": Object {
-                "Service": "apigateway.amazonaws.com",
-              },
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-      },
-      "Type": "AWS::IAM::Role",
-    },
-    "eventBridgeSocketDeployeventBridgeSocketDeployapiiamroleDefaultPolicy11C8AA27": Object {
-      "Properties": Object {
-        "PolicyDocument": Object {
-          "Statement": Array [
-            Object {
-              "Action": "lambda:InvokeFunction",
-              "Effect": "Allow",
-              "Resource": Array [
-                Object {
-                  "Fn::GetAtt": Array [
-                    "eventBridgeSocketDeployonconnectAE0ACD17",
-                    "Arn",
-                  ],
-                },
-                Object {
-                  "Fn::GetAtt": Array [
-                    "eventBridgeSocketDeployondisconnect0F61A161",
-                    "Arn",
-                  ],
-                },
-                Object {
-                  "Fn::GetAtt": Array [
-                    "eventBridgeSocketDeployeventbridgebroker1D8651C6",
-                    "Arn",
-                  ],
-                },
-              ],
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-        "PolicyName": "eventBridgeSocketDeployeventBridgeSocketDeployapiiamroleDefaultPolicy11C8AA27",
-        "Roles": Array [
-          Object {
-            "Ref": "eventBridgeSocketDeployeventBridgeSocketDeployapiiamrole5B0A9275",
-          },
-        ],
-      },
-      "Type": "AWS::IAM::Policy",
-    },
-    "eventBridgeSocketDeployeventBridgeSocketDeployapistage1336E4D7": Object {
-      "Properties": Object {
-        "ApiId": Object {
-          "Ref": "eventBridgeSocketDeployeventBridgeSocketDeployapi37537039",
+          "Ref": "eventBridgeSocketDeployeventBridgeSocketDeployapiA13E2D47",
         },
         "AutoDeploy": true,
-        "DeploymentId": Object {
-          "Ref": "eventBridgeSocketDeployeventBridgeSocketDeployapideploymentBB543A98",
-        },
         "StageName": "dev",
       },
       "Type": "AWS::ApiGatewayV2::Stage",
@@ -333,7 +329,7 @@ Object {
       "Properties": Object {
         "Code": Object {
           "S3Bucket": Object {
-            "Ref": "AssetParameters107a2b438ef0db7e4de3748b00497e5f7a514076db640c8337ebf0eaa07750c8S3Bucket38874978",
+            "Ref": "AssetParameters189f2c91281e177eada2df4ac00eb351945e4c57f6d22baffa28e6838cf9d8f4S3Bucket210A09A6",
           },
           "S3Key": Object {
             "Fn::Join": Array [
@@ -346,7 +342,7 @@ Object {
                       "Fn::Split": Array [
                         "||",
                         Object {
-                          "Ref": "AssetParameters107a2b438ef0db7e4de3748b00497e5f7a514076db640c8337ebf0eaa07750c8S3VersionKey1400C6B5",
+                          "Ref": "AssetParameters189f2c91281e177eada2df4ac00eb351945e4c57f6d22baffa28e6838cf9d8f4S3VersionKey996026C1",
                         },
                       ],
                     },
@@ -359,7 +355,7 @@ Object {
                       "Fn::Split": Array [
                         "||",
                         Object {
-                          "Ref": "AssetParameters107a2b438ef0db7e4de3748b00497e5f7a514076db640c8337ebf0eaa07750c8S3VersionKey1400C6B5",
+                          "Ref": "AssetParameters189f2c91281e177eada2df4ac00eb351945e4c57f6d22baffa28e6838cf9d8f4S3VersionKey996026C1",
                         },
                       ],
                     },
@@ -378,7 +374,7 @@ Object {
                 Array [
                   Object {
                     "Fn::GetAtt": Array [
-                      "eventBridgeSocketDeployeventBridgeSocketDeployapi37537039",
+                      "eventBridgeSocketDeployeventBridgeSocketDeployapiA13E2D47",
                       "ApiEndpoint",
                     ],
                   },
@@ -422,7 +418,7 @@ Object {
                     },
                     ":",
                     Object {
-                      "Ref": "eventBridgeSocketDeployeventBridgeSocketDeployapi37537039",
+                      "Ref": "eventBridgeSocketDeployeventBridgeSocketDeployapiA13E2D47",
                     },
                     "/*",
                   ],
@@ -507,7 +503,7 @@ Object {
       "Properties": Object {
         "Code": Object {
           "S3Bucket": Object {
-            "Ref": "AssetParameters64f97fd8adc4902cec9172b17a0460ffd30253460af4102970b45fb06bf7c9fbS3BucketC060F8AB",
+            "Ref": "AssetParameters58b44f089530a411338be00d6a42306e54315ad4296be77451fa81c7742b2a9aS3Bucket18FBAF40",
           },
           "S3Key": Object {
             "Fn::Join": Array [
@@ -520,7 +516,7 @@ Object {
                       "Fn::Split": Array [
                         "||",
                         Object {
-                          "Ref": "AssetParameters64f97fd8adc4902cec9172b17a0460ffd30253460af4102970b45fb06bf7c9fbS3VersionKey669E1467",
+                          "Ref": "AssetParameters58b44f089530a411338be00d6a42306e54315ad4296be77451fa81c7742b2a9aS3VersionKey5C07FCF9",
                         },
                       ],
                     },
@@ -533,7 +529,7 @@ Object {
                       "Fn::Split": Array [
                         "||",
                         Object {
-                          "Ref": "AssetParameters64f97fd8adc4902cec9172b17a0460ffd30253460af4102970b45fb06bf7c9fbS3VersionKey669E1467",
+                          "Ref": "AssetParameters58b44f089530a411338be00d6a42306e54315ad4296be77451fa81c7742b2a9aS3VersionKey5C07FCF9",
                         },
                       ],
                     },
@@ -643,7 +639,7 @@ Object {
       "Properties": Object {
         "Code": Object {
           "S3Bucket": Object {
-            "Ref": "AssetParameters37281412a403bda1bfbe1e2e98feba0457b05e53b3a3f2f7740dacc4d345bc0aS3Bucket331D4331",
+            "Ref": "AssetParametersa6c413ff98ccb54bd991dedcc0fab2635afc75162f4f3b980e2906d1e87d802aS3BucketE6FA6158",
           },
           "S3Key": Object {
             "Fn::Join": Array [
@@ -656,7 +652,7 @@ Object {
                       "Fn::Split": Array [
                         "||",
                         Object {
-                          "Ref": "AssetParameters37281412a403bda1bfbe1e2e98feba0457b05e53b3a3f2f7740dacc4d345bc0aS3VersionKeyE02751CD",
+                          "Ref": "AssetParametersa6c413ff98ccb54bd991dedcc0fab2635afc75162f4f3b980e2906d1e87d802aS3VersionKey824648E8",
                         },
                       ],
                     },
@@ -669,7 +665,7 @@ Object {
                       "Fn::Split": Array [
                         "||",
                         Object {
-                          "Ref": "AssetParameters37281412a403bda1bfbe1e2e98feba0457b05e53b3a3f2f7740dacc4d345bc0aS3VersionKeyE02751CD",
+                          "Ref": "AssetParametersa6c413ff98ccb54bd991dedcc0fab2635afc75162f4f3b980e2906d1e87d802aS3VersionKey824648E8",
                         },
                       ],
                     },
