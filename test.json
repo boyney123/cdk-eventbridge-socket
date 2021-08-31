@@ -1,0 +1,661 @@
+{
+  "Resources": {
+    "eventBridgeSocketDeployeventBridgeSocketDeployapi37537039": {
+      "Type": "AWS::ApiGatewayV2::Api",
+      "Properties": {
+        "Name": "EventBridgeSockets",
+        "ProtocolType": "WEBSOCKET",
+        "RouteSelectionExpression": "$request.body.action"
+      }
+    },
+    "eventBridgeSocketDeployeventBridgeSocketDeployconnectionstable5C7E957A": {
+      "Type": "AWS::DynamoDB::Table",
+      "Properties": {
+        "KeySchema": [
+          {
+            "AttributeName": "connectionId",
+            "KeyType": "HASH"
+          }
+        ],
+        "AttributeDefinitions": [
+          {
+            "AttributeName": "connectionId",
+            "AttributeType": "S"
+          }
+        ],
+        "ProvisionedThroughput": {
+          "ReadCapacityUnits": 5,
+          "WriteCapacityUnits": 5
+        },
+        "TableName": "eventBridgeSocketDeploy-connections-table"
+      },
+      "UpdateReplacePolicy": "Delete",
+      "DeletionPolicy": "Delete"
+    },
+    "eventBridgeSocketDeployonconnectServiceRole1FF5024C": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com"
+              }
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    "eventBridgeSocketDeployonconnectServiceRoleDefaultPolicy4A968F2B": {
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": ["dynamodb:BatchGetItem", "dynamodb:GetRecords", "dynamodb:GetShardIterator", "dynamodb:Query", "dynamodb:GetItem", "dynamodb:Scan", "dynamodb:ConditionCheckItem", "dynamodb:BatchWriteItem", "dynamodb:PutItem", "dynamodb:UpdateItem", "dynamodb:DeleteItem"],
+              "Effect": "Allow",
+              "Resource": [
+                {
+                  "Fn::GetAtt": ["eventBridgeSocketDeployeventBridgeSocketDeployconnectionstable5C7E957A", "Arn"]
+                },
+                {
+                  "Ref": "AWS::NoValue"
+                }
+              ]
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "PolicyName": "eventBridgeSocketDeployonconnectServiceRoleDefaultPolicy4A968F2B",
+        "Roles": [
+          {
+            "Ref": "eventBridgeSocketDeployonconnectServiceRole1FF5024C"
+          }
+        ]
+      }
+    },
+    "eventBridgeSocketDeployonconnectAE0ACD17": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Ref": "AssetParameters58b44f089530a411338be00d6a42306e54315ad4296be77451fa81c7742b2a9aS3Bucket18FBAF40"
+          },
+          "S3Key": {
+            "Fn::Join": [
+              "",
+              [
+                {
+                  "Fn::Select": [
+                    0,
+                    {
+                      "Fn::Split": [
+                        "||",
+                        {
+                          "Ref": "AssetParameters58b44f089530a411338be00d6a42306e54315ad4296be77451fa81c7742b2a9aS3VersionKey5C07FCF9"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "Fn::Select": [
+                    1,
+                    {
+                      "Fn::Split": [
+                        "||",
+                        {
+                          "Ref": "AssetParameters58b44f089530a411338be00d6a42306e54315ad4296be77451fa81c7742b2a9aS3VersionKey5C07FCF9"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            ]
+          }
+        },
+        "Role": {
+          "Fn::GetAtt": ["eventBridgeSocketDeployonconnectServiceRole1FF5024C", "Arn"]
+        },
+        "Environment": {
+          "Variables": {
+            "TABLE_NAME": "eventBridgeSocketDeploy-connections-table"
+          }
+        },
+        "Handler": "on-connect.handler",
+        "MemorySize": 256,
+        "Runtime": "nodejs12.x",
+        "Timeout": 300
+      },
+      "DependsOn": ["eventBridgeSocketDeployonconnectServiceRoleDefaultPolicy4A968F2B", "eventBridgeSocketDeployonconnectServiceRole1FF5024C"]
+    },
+    "eventBridgeSocketDeployondisconnectServiceRoleA5D3C57B": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com"
+              }
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    "eventBridgeSocketDeployondisconnectServiceRoleDefaultPolicyC9FDF75A": {
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": ["dynamodb:BatchGetItem", "dynamodb:GetRecords", "dynamodb:GetShardIterator", "dynamodb:Query", "dynamodb:GetItem", "dynamodb:Scan", "dynamodb:ConditionCheckItem", "dynamodb:BatchWriteItem", "dynamodb:PutItem", "dynamodb:UpdateItem", "dynamodb:DeleteItem"],
+              "Effect": "Allow",
+              "Resource": [
+                {
+                  "Fn::GetAtt": ["eventBridgeSocketDeployeventBridgeSocketDeployconnectionstable5C7E957A", "Arn"]
+                },
+                {
+                  "Ref": "AWS::NoValue"
+                }
+              ]
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "PolicyName": "eventBridgeSocketDeployondisconnectServiceRoleDefaultPolicyC9FDF75A",
+        "Roles": [
+          {
+            "Ref": "eventBridgeSocketDeployondisconnectServiceRoleA5D3C57B"
+          }
+        ]
+      }
+    },
+    "eventBridgeSocketDeployondisconnect0F61A161": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Ref": "AssetParametersa6c413ff98ccb54bd991dedcc0fab2635afc75162f4f3b980e2906d1e87d802aS3BucketE6FA6158"
+          },
+          "S3Key": {
+            "Fn::Join": [
+              "",
+              [
+                {
+                  "Fn::Select": [
+                    0,
+                    {
+                      "Fn::Split": [
+                        "||",
+                        {
+                          "Ref": "AssetParametersa6c413ff98ccb54bd991dedcc0fab2635afc75162f4f3b980e2906d1e87d802aS3VersionKey824648E8"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "Fn::Select": [
+                    1,
+                    {
+                      "Fn::Split": [
+                        "||",
+                        {
+                          "Ref": "AssetParametersa6c413ff98ccb54bd991dedcc0fab2635afc75162f4f3b980e2906d1e87d802aS3VersionKey824648E8"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            ]
+          }
+        },
+        "Role": {
+          "Fn::GetAtt": ["eventBridgeSocketDeployondisconnectServiceRoleA5D3C57B", "Arn"]
+        },
+        "Environment": {
+          "Variables": {
+            "TABLE_NAME": "eventBridgeSocketDeploy-connections-table"
+          }
+        },
+        "Handler": "on-disconnect.handler",
+        "MemorySize": 256,
+        "Runtime": "nodejs12.x",
+        "Timeout": 300
+      },
+      "DependsOn": ["eventBridgeSocketDeployondisconnectServiceRoleDefaultPolicyC9FDF75A", "eventBridgeSocketDeployondisconnectServiceRoleA5D3C57B"]
+    },
+    "eventBridgeSocketDeployeventbridgebrokerServiceRoleE80F517C": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com"
+              }
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    "eventBridgeSocketDeployeventbridgebrokerServiceRoleDefaultPolicy5D548830": {
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": "execute-api:ManageConnections",
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::Join": [
+                  "",
+                  [
+                    "arn:aws:execute-api:",
+                    {
+                      "Ref": "AWS::Region"
+                    },
+                    ":",
+                    {
+                      "Ref": "AWS::AccountId"
+                    },
+                    ":",
+                    {
+                      "Ref": "eventBridgeSocketDeployeventBridgeSocketDeployapi37537039"
+                    },
+                    "/*"
+                  ]
+                ]
+              }
+            },
+            {
+              "Action": ["dynamodb:BatchGetItem", "dynamodb:GetRecords", "dynamodb:GetShardIterator", "dynamodb:Query", "dynamodb:GetItem", "dynamodb:Scan", "dynamodb:ConditionCheckItem", "dynamodb:BatchWriteItem", "dynamodb:PutItem", "dynamodb:UpdateItem", "dynamodb:DeleteItem"],
+              "Effect": "Allow",
+              "Resource": [
+                {
+                  "Fn::GetAtt": ["eventBridgeSocketDeployeventBridgeSocketDeployconnectionstable5C7E957A", "Arn"]
+                },
+                {
+                  "Ref": "AWS::NoValue"
+                }
+              ]
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "PolicyName": "eventBridgeSocketDeployeventbridgebrokerServiceRoleDefaultPolicy5D548830",
+        "Roles": [
+          {
+            "Ref": "eventBridgeSocketDeployeventbridgebrokerServiceRoleE80F517C"
+          }
+        ]
+      }
+    },
+    "eventBridgeSocketDeployeventbridgebroker1D8651C6": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Ref": "AssetParameters189f2c91281e177eada2df4ac00eb351945e4c57f6d22baffa28e6838cf9d8f4S3Bucket210A09A6"
+          },
+          "S3Key": {
+            "Fn::Join": [
+              "",
+              [
+                {
+                  "Fn::Select": [
+                    0,
+                    {
+                      "Fn::Split": [
+                        "||",
+                        {
+                          "Ref": "AssetParameters189f2c91281e177eada2df4ac00eb351945e4c57f6d22baffa28e6838cf9d8f4S3VersionKey996026C1"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "Fn::Select": [
+                    1,
+                    {
+                      "Fn::Split": [
+                        "||",
+                        {
+                          "Ref": "AssetParameters189f2c91281e177eada2df4ac00eb351945e4c57f6d22baffa28e6838cf9d8f4S3VersionKey996026C1"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            ]
+          }
+        },
+        "Role": {
+          "Fn::GetAtt": ["eventBridgeSocketDeployeventbridgebrokerServiceRoleE80F517C", "Arn"]
+        },
+        "Environment": {
+          "Variables": {
+            "TABLE_NAME": "eventBridgeSocketDeploy-connections-table",
+            "WEBSOCKET_API": {
+              "Fn::Join": [
+                "",
+                [
+                  {
+                    "Fn::GetAtt": ["eventBridgeSocketDeployeventBridgeSocketDeployapi37537039", "ApiEndpoint"]
+                  },
+                  "/dev"
+                ]
+              ]
+            }
+          }
+        },
+        "Handler": "eventbridge-broker.handler",
+        "MemorySize": 256,
+        "Runtime": "nodejs12.x",
+        "Timeout": 300
+      },
+      "DependsOn": ["eventBridgeSocketDeployeventbridgebrokerServiceRoleDefaultPolicy5D548830", "eventBridgeSocketDeployeventbridgebrokerServiceRoleE80F517C"]
+    },
+    "eventBridgeSocketDeployeventBridgeSocketDeployapiiamrole5B0A9275": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "apigateway.amazonaws.com"
+              }
+            }
+          ],
+          "Version": "2012-10-17"
+        }
+      }
+    },
+    "eventBridgeSocketDeployeventBridgeSocketDeployapiiamroleDefaultPolicy11C8AA27": {
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": "lambda:InvokeFunction",
+              "Effect": "Allow",
+              "Resource": [
+                {
+                  "Fn::GetAtt": ["eventBridgeSocketDeployonconnectAE0ACD17", "Arn"]
+                },
+                {
+                  "Fn::GetAtt": ["eventBridgeSocketDeployondisconnect0F61A161", "Arn"]
+                },
+                {
+                  "Fn::GetAtt": ["eventBridgeSocketDeployeventbridgebroker1D8651C6", "Arn"]
+                }
+              ]
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "PolicyName": "eventBridgeSocketDeployeventBridgeSocketDeployapiiamroleDefaultPolicy11C8AA27",
+        "Roles": [
+          {
+            "Ref": "eventBridgeSocketDeployeventBridgeSocketDeployapiiamrole5B0A9275"
+          }
+        ]
+      }
+    },
+    "eventBridgeSocketDeployconnectlambdaintegrationA9D7FA28": {
+      "Type": "AWS::ApiGatewayV2::Integration",
+      "Properties": {
+        "ApiId": {
+          "Ref": "eventBridgeSocketDeployeventBridgeSocketDeployapi37537039"
+        },
+        "IntegrationType": "AWS_PROXY",
+        "CredentialsArn": {
+          "Fn::GetAtt": ["eventBridgeSocketDeployeventBridgeSocketDeployapiiamrole5B0A9275", "Arn"]
+        },
+        "IntegrationUri": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:aws:apigateway:",
+              {
+                "Ref": "AWS::Region"
+              },
+              ":lambda:path/2015-03-31/functions/",
+              {
+                "Fn::GetAtt": ["eventBridgeSocketDeployonconnectAE0ACD17", "Arn"]
+              },
+              "/invocations"
+            ]
+          ]
+        }
+      }
+    },
+    "eventBridgeSocketDeploydisconnectlambdaintegration96C39EB8": {
+      "Type": "AWS::ApiGatewayV2::Integration",
+      "Properties": {
+        "ApiId": {
+          "Ref": "eventBridgeSocketDeployeventBridgeSocketDeployapi37537039"
+        },
+        "IntegrationType": "AWS_PROXY",
+        "CredentialsArn": {
+          "Fn::GetAtt": ["eventBridgeSocketDeployeventBridgeSocketDeployapiiamrole5B0A9275", "Arn"]
+        },
+        "IntegrationUri": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:aws:apigateway:",
+              {
+                "Ref": "AWS::Region"
+              },
+              ":lambda:path/2015-03-31/functions/",
+              {
+                "Fn::GetAtt": ["eventBridgeSocketDeployondisconnect0F61A161", "Arn"]
+              },
+              "/invocations"
+            ]
+          ]
+        }
+      }
+    },
+    "eventBridgeSocketDeployconnectrouteE4B2A96E": {
+      "Type": "AWS::ApiGatewayV2::Route",
+      "Properties": {
+        "ApiId": {
+          "Ref": "eventBridgeSocketDeployeventBridgeSocketDeployapi37537039"
+        },
+        "RouteKey": "$connect",
+        "AuthorizationType": "NONE",
+        "Target": {
+          "Fn::Join": [
+            "",
+            [
+              "integrations/",
+              {
+                "Ref": "eventBridgeSocketDeployconnectlambdaintegrationA9D7FA28"
+              }
+            ]
+          ]
+        }
+      }
+    },
+    "eventBridgeSocketDeploydisconnectroute371DB6DD": {
+      "Type": "AWS::ApiGatewayV2::Route",
+      "Properties": {
+        "ApiId": {
+          "Ref": "eventBridgeSocketDeployeventBridgeSocketDeployapi37537039"
+        },
+        "RouteKey": "$disconnect",
+        "AuthorizationType": "NONE",
+        "Target": {
+          "Fn::Join": [
+            "",
+            [
+              "integrations/",
+              {
+                "Ref": "eventBridgeSocketDeploydisconnectlambdaintegration96C39EB8"
+              }
+            ]
+          ]
+        }
+      }
+    },
+    "eventBridgeSocketDeployeventBridgeSocketDeployapideploymentBB543A98": {
+      "Type": "AWS::ApiGatewayV2::Deployment",
+      "Properties": {
+        "ApiId": {
+          "Ref": "eventBridgeSocketDeployeventBridgeSocketDeployapi37537039"
+        }
+      },
+      "DependsOn": ["eventBridgeSocketDeployconnectrouteE4B2A96E", "eventBridgeSocketDeploydisconnectroute371DB6DD"]
+    },
+    "eventBridgeSocketDeployeventBridgeSocketDeployapistage1336E4D7": {
+      "Type": "AWS::ApiGatewayV2::Stage",
+      "Properties": {
+        "ApiId": {
+          "Ref": "eventBridgeSocketDeployeventBridgeSocketDeployapi37537039"
+        },
+        "StageName": "dev",
+        "AutoDeploy": true,
+        "DeploymentId": {
+          "Ref": "eventBridgeSocketDeployeventBridgeSocketDeployapideploymentBB543A98"
+        }
+      }
+    },
+    "eventBridgeSocketDeployWebsocketRule71C1F191": {
+      "Type": "AWS::Events::Rule",
+      "Properties": {
+        "EventBusName": "my-random-bus",
+        "EventPattern": {
+          "account": ["my-account"]
+        },
+        "State": "ENABLED",
+        "Targets": [
+          {
+            "Arn": {
+              "Fn::GetAtt": ["eventBridgeSocketDeployeventbridgebroker1D8651C6", "Arn"]
+            },
+            "Id": "Target0"
+          }
+        ]
+      }
+    },
+    "eventBridgeSocketDeployWebsocketRuleAllowEventRuleeventBridgeSocketDeployeventbridgebroker9CB272C85390421F": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "Action": "lambda:InvokeFunction",
+        "FunctionName": {
+          "Fn::GetAtt": ["eventBridgeSocketDeployeventbridgebroker1D8651C6", "Arn"]
+        },
+        "Principal": "events.amazonaws.com",
+        "SourceArn": {
+          "Fn::GetAtt": ["eventBridgeSocketDeployWebsocketRule71C1F191", "Arn"]
+        }
+      }
+    }
+  },
+  "Outputs": {
+    "eventBridgeSocketDeployWebsocketendpoint7B865CDA": {
+      "Value": {
+        "Fn::GetAtt": ["eventBridgeSocketDeployeventBridgeSocketDeployapi37537039", "ApiEndpoint"]
+      }
+    }
+  },
+  "Parameters": {
+    "AssetParameters58b44f089530a411338be00d6a42306e54315ad4296be77451fa81c7742b2a9aS3Bucket18FBAF40": {
+      "Type": "String",
+      "Description": "S3 bucket for asset \"58b44f089530a411338be00d6a42306e54315ad4296be77451fa81c7742b2a9a\""
+    },
+    "AssetParameters58b44f089530a411338be00d6a42306e54315ad4296be77451fa81c7742b2a9aS3VersionKey5C07FCF9": {
+      "Type": "String",
+      "Description": "S3 key for asset version \"58b44f089530a411338be00d6a42306e54315ad4296be77451fa81c7742b2a9a\""
+    },
+    "AssetParameters58b44f089530a411338be00d6a42306e54315ad4296be77451fa81c7742b2a9aArtifactHash85421036": {
+      "Type": "String",
+      "Description": "Artifact hash for asset \"58b44f089530a411338be00d6a42306e54315ad4296be77451fa81c7742b2a9a\""
+    },
+    "AssetParametersa6c413ff98ccb54bd991dedcc0fab2635afc75162f4f3b980e2906d1e87d802aS3BucketE6FA6158": {
+      "Type": "String",
+      "Description": "S3 bucket for asset \"a6c413ff98ccb54bd991dedcc0fab2635afc75162f4f3b980e2906d1e87d802a\""
+    },
+    "AssetParametersa6c413ff98ccb54bd991dedcc0fab2635afc75162f4f3b980e2906d1e87d802aS3VersionKey824648E8": {
+      "Type": "String",
+      "Description": "S3 key for asset version \"a6c413ff98ccb54bd991dedcc0fab2635afc75162f4f3b980e2906d1e87d802a\""
+    },
+    "AssetParametersa6c413ff98ccb54bd991dedcc0fab2635afc75162f4f3b980e2906d1e87d802aArtifactHash2B2A4443": {
+      "Type": "String",
+      "Description": "Artifact hash for asset \"a6c413ff98ccb54bd991dedcc0fab2635afc75162f4f3b980e2906d1e87d802a\""
+    },
+    "AssetParameters189f2c91281e177eada2df4ac00eb351945e4c57f6d22baffa28e6838cf9d8f4S3Bucket210A09A6": {
+      "Type": "String",
+      "Description": "S3 bucket for asset \"189f2c91281e177eada2df4ac00eb351945e4c57f6d22baffa28e6838cf9d8f4\""
+    },
+    "AssetParameters189f2c91281e177eada2df4ac00eb351945e4c57f6d22baffa28e6838cf9d8f4S3VersionKey996026C1": {
+      "Type": "String",
+      "Description": "S3 key for asset version \"189f2c91281e177eada2df4ac00eb351945e4c57f6d22baffa28e6838cf9d8f4\""
+    },
+    "AssetParameters189f2c91281e177eada2df4ac00eb351945e4c57f6d22baffa28e6838cf9d8f4ArtifactHashEE784EBF": {
+      "Type": "String",
+      "Description": "Artifact hash for asset \"189f2c91281e177eada2df4ac00eb351945e4c57f6d22baffa28e6838cf9d8f4\""
+    }
+  }
+}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
