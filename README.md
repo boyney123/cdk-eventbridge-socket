@@ -12,7 +12,7 @@ You may want to use tools like [Postman Websockets](https://blog.postman.com/pos
 
 This uses AWS ApiGateway, DynamoDB (to store connections) and Lambda.
 
-![Architecture](./architecture.png)
+![Architecture](architecture.png)
 
 ## Installation and Usage
 
