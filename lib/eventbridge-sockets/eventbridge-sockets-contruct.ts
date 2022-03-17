@@ -95,6 +95,8 @@ export class EventBridgeWebSocket extends Construct {
     });
 
     new CfnOutput(this, 'Websocket endpoint', { value: `${api.apiEndpoint}/${config?.stage}` });
+    
+    this.websocketEndpoint = `${api.apiEndpoint}/${config?.stage}`;
   }
 
   private createFunction(name: string, tableName: string, options: any = {}) {
