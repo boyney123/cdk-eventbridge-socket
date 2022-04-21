@@ -50,7 +50,7 @@ When using the `cdk-eventbridge-socket` the new websocket url will be output on 
 
 There are only a few properties you have to set `bus`, `eventPattern` and `stage`.
 
-You can listen to any EventBridge source/pattern you like, just replace the `eventPattern` with what you want to listen too.
+You can listen to any EventBridge source/pattern you like, just replace the `eventPattern` with what you want to listen to.
 
 #### Examples
 
