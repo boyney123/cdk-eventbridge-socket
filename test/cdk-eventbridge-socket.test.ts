@@ -1,4 +1,8 @@
-import { SynthUtils, expect as expectCDK, haveResourceLike } from '@aws-cdk/assert';
+import {
+  SynthUtils,
+  expect as expectCDK,
+  haveResourceLike,
+} from '@aws-cdk/assert';
 import { Stack } from '@aws-cdk/core';
 import { EventBridgeWebSocket } from '../lib';
 
@@ -38,18 +42,28 @@ describe('EventBridgeWebSocket', () => {
     // on connect integration
     expectCDK(stack).to(
       haveResourceLike('AWS::ApiGatewayV2::Integration', {
+        ApiId: {
+          Ref: 'eventBridgeSocketDeployeventBridgeSocketDeployapiA13E2D47',
+        },
         IntegrationType: 'AWS_PROXY',
         IntegrationUri: {
           'Fn::Join': [
             '',
             [
-              'arn:aws:apigateway:',
+              'arn:',
+              {
+                Ref: 'AWS::Partition',
+              },
+              ':apigateway:',
               {
                 Ref: 'AWS::Region',
               },
               ':lambda:path/2015-03-31/functions/',
               {
-                'Fn::GetAtt': ['eventBridgeSocketDeployonconnectAE0ACD17', 'Arn'],
+                'Fn::GetAtt': [
+                  'eventBridgeSocketDeployonconnectAE0ACD17',
+                  'Arn',
+                ],
               },
               '/invocations',
             ],
@@ -60,6 +74,9 @@ describe('EventBridgeWebSocket', () => {
 
     // expectCDK(stack).to(
     haveResourceLike('AWS::ApiGatewayV2::Route', {
+      ApiId: {
+        Ref: 'eventBridgeSocketDeployeventBridgeSocketDeployapiA13E2D47',
+      },
       RouteKey: '$connect',
       Target: {
         'Fn::Join': [
@@ -76,18 +93,28 @@ describe('EventBridgeWebSocket', () => {
 
     expectCDK(stack).to(
       haveResourceLike('AWS::ApiGatewayV2::Integration', {
+        ApiId: {
+          Ref: 'eventBridgeSocketDeployeventBridgeSocketDeployapiA13E2D47',
+        },
         IntegrationType: 'AWS_PROXY',
         IntegrationUri: {
           'Fn::Join': [
             '',
             [
-              'arn:aws:apigateway:',
+              'arn:',
+              {
+                Ref: 'AWS::Partition',
+              },
+              ':apigateway:',
               {
                 Ref: 'AWS::Region',
               },
               ':lambda:path/2015-03-31/functions/',
               {
-                'Fn::GetAtt': ['eventBridgeSocketDeployondisconnect0F61A161', 'Arn'],
+                'Fn::GetAtt': [
+                  'eventBridgeSocketDeployondisconnect0F61A161',
+                  'Arn',
+                ],
               },
               '/invocations',
             ],
@@ -98,6 +125,9 @@ describe('EventBridgeWebSocket', () => {
 
     expectCDK(stack).to(
       haveResourceLike('AWS::ApiGatewayV2::Route', {
+        ApiId: {
+          Ref: 'eventBridgeSocketDeployeventBridgeSocketDeployapiA13E2D47',
+        },
         RouteKey: '$disconnect',
         Target: {
           'Fn::Join': [
@@ -105,7 +135,7 @@ describe('EventBridgeWebSocket', () => {
             [
               'integrations/',
               {
-                Ref: 'eventBridgeSocketDeploydisconnectlambdaintegration96C39EB8',
+                Ref: 'eventBridgeSocketDeployeventBridgeSocketDeployapidisconnectRouteWebSocketIntegration0a84f9265d12d31c9984b952fd3b77202D79D90F',
               },
             ],
           ],
