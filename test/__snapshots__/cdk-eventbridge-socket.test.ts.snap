@@ -1,69 +1,39 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`EventBridgeWebSocket snapshot test EventsRuleToSns default params 1`] = `
-Object {
-  "Outputs": Object {
-    "eventBridgeSocketDeployWebsocketendpoint7B865CDA": Object {
-      "Value": Object {
-        "Fn::GetAtt": Array [
-          "eventBridgeSocketDeployeventBridgeSocketDeployapi37537039",
-          "ApiEndpoint",
+{
+  "Outputs": {
+    "eventBridgeSocketDeployWebsocketendpoint7B865CDA": {
+      "Value": {
+        "Fn::Join": [
+          "",
+          [
+            {
+              "Fn::GetAtt": [
+                "eventBridgeSocketDeployeventBridgeSocketDeployapiA13E2D47",
+                "ApiEndpoint",
+              ],
+            },
+            "/dev",
+          ],
         ],
       },
     },
   },
-  "Parameters": Object {
-    "AssetParameters189f2c91281e177eada2df4ac00eb351945e4c57f6d22baffa28e6838cf9d8f4ArtifactHashEE784EBF": Object {
-      "Description": "Artifact hash for asset \\"189f2c91281e177eada2df4ac00eb351945e4c57f6d22baffa28e6838cf9d8f4\\"",
-      "Type": "String",
-    },
-    "AssetParameters189f2c91281e177eada2df4ac00eb351945e4c57f6d22baffa28e6838cf9d8f4S3Bucket210A09A6": Object {
-      "Description": "S3 bucket for asset \\"189f2c91281e177eada2df4ac00eb351945e4c57f6d22baffa28e6838cf9d8f4\\"",
-      "Type": "String",
-    },
-    "AssetParameters189f2c91281e177eada2df4ac00eb351945e4c57f6d22baffa28e6838cf9d8f4S3VersionKey996026C1": Object {
-      "Description": "S3 key for asset version \\"189f2c91281e177eada2df4ac00eb351945e4c57f6d22baffa28e6838cf9d8f4\\"",
-      "Type": "String",
-    },
-    "AssetParameters58b44f089530a411338be00d6a42306e54315ad4296be77451fa81c7742b2a9aArtifactHash85421036": Object {
-      "Description": "Artifact hash for asset \\"58b44f089530a411338be00d6a42306e54315ad4296be77451fa81c7742b2a9a\\"",
-      "Type": "String",
-    },
-    "AssetParameters58b44f089530a411338be00d6a42306e54315ad4296be77451fa81c7742b2a9aS3Bucket18FBAF40": Object {
-      "Description": "S3 bucket for asset \\"58b44f089530a411338be00d6a42306e54315ad4296be77451fa81c7742b2a9a\\"",
-      "Type": "String",
-    },
-    "AssetParameters58b44f089530a411338be00d6a42306e54315ad4296be77451fa81c7742b2a9aS3VersionKey5C07FCF9": Object {
-      "Description": "S3 key for asset version \\"58b44f089530a411338be00d6a42306e54315ad4296be77451fa81c7742b2a9a\\"",
-      "Type": "String",
-    },
-    "AssetParametersa6c413ff98ccb54bd991dedcc0fab2635afc75162f4f3b980e2906d1e87d802aArtifactHash2B2A4443": Object {
-      "Description": "Artifact hash for asset \\"a6c413ff98ccb54bd991dedcc0fab2635afc75162f4f3b980e2906d1e87d802a\\"",
-      "Type": "String",
-    },
-    "AssetParametersa6c413ff98ccb54bd991dedcc0fab2635afc75162f4f3b980e2906d1e87d802aS3BucketE6FA6158": Object {
-      "Description": "S3 bucket for asset \\"a6c413ff98ccb54bd991dedcc0fab2635afc75162f4f3b980e2906d1e87d802a\\"",
-      "Type": "String",
-    },
-    "AssetParametersa6c413ff98ccb54bd991dedcc0fab2635afc75162f4f3b980e2906d1e87d802aS3VersionKey824648E8": Object {
-      "Description": "S3 key for asset version \\"a6c413ff98ccb54bd991dedcc0fab2635afc75162f4f3b980e2906d1e87d802a\\"",
-      "Type": "String",
-    },
-  },
-  "Resources": Object {
-    "eventBridgeSocketDeployWebsocketRule71C1F191": Object {
-      "Properties": Object {
+  "Resources": {
+    "eventBridgeSocketDeployWebsocketRule71C1F191": {
+      "Properties": {
         "EventBusName": "my-random-bus",
-        "EventPattern": Object {
-          "account": Array [
+        "EventPattern": {
+          "account": [
             "my-account",
           ],
         },
         "State": "ENABLED",
-        "Targets": Array [
-          Object {
-            "Arn": Object {
-              "Fn::GetAtt": Array [
+        "Targets": [
+          {
+            "Arn": {
+              "Fn::GetAtt": [
                 "eventBridgeSocketDeployeventbridgebroker1D8651C6",
                 "Arn",
               ],
@@ -74,18 +44,18 @@ Object {
       },
       "Type": "AWS::Events::Rule",
     },
-    "eventBridgeSocketDeployWebsocketRuleAllowEventRuleeventBridgeSocketDeployeventbridgebroker9CB272C85390421F": Object {
-      "Properties": Object {
+    "eventBridgeSocketDeployWebsocketRuleAllowEventRuleeventBridgeSocketDeployeventbridgebroker9CB272C85390421F": {
+      "Properties": {
         "Action": "lambda:InvokeFunction",
-        "FunctionName": Object {
-          "Fn::GetAtt": Array [
+        "FunctionName": {
+          "Fn::GetAtt": [
             "eventBridgeSocketDeployeventbridgebroker1D8651C6",
             "Arn",
           ],
         },
         "Principal": "events.amazonaws.com",
-        "SourceArn": Object {
-          "Fn::GetAtt": Array [
+        "SourceArn": {
+          "Fn::GetAtt": [
             "eventBridgeSocketDeployWebsocketRule71C1F191",
             "Arn",
           ],
@@ -93,29 +63,56 @@ Object {
       },
       "Type": "AWS::Lambda::Permission",
     },
-    "eventBridgeSocketDeployconnectlambdaintegrationA9D7FA28": Object {
-      "Properties": Object {
-        "ApiId": Object {
-          "Ref": "eventBridgeSocketDeployeventBridgeSocketDeployapi37537039",
+    "eventBridgeSocketDeployeventBridgeSocketDeployapiA13E2D47": {
+      "Properties": {
+        "Name": "EventBridgeSockets",
+        "ProtocolType": "WEBSOCKET",
+        "RouteSelectionExpression": "$request.body.action",
+      },
+      "Type": "AWS::ApiGatewayV2::Api",
+    },
+    "eventBridgeSocketDeployeventBridgeSocketDeployapiconnectRoute308BAAC5": {
+      "Properties": {
+        "ApiId": {
+          "Ref": "eventBridgeSocketDeployeventBridgeSocketDeployapiA13E2D47",
         },
-        "CredentialsArn": Object {
-          "Fn::GetAtt": Array [
-            "eventBridgeSocketDeployeventBridgeSocketDeployapiiamrole5B0A9275",
-            "Arn",
+        "AuthorizationType": "NONE",
+        "RouteKey": "$connect",
+        "Target": {
+          "Fn::Join": [
+            "",
+            [
+              "integrations/",
+              {
+                "Ref": "eventBridgeSocketDeployeventBridgeSocketDeployapiconnectRouteConnectIntegration439F042A",
+              },
+            ],
           ],
         },
+      },
+      "Type": "AWS::ApiGatewayV2::Route",
+    },
+    "eventBridgeSocketDeployeventBridgeSocketDeployapiconnectRouteConnectIntegration439F042A": {
+      "Properties": {
+        "ApiId": {
+          "Ref": "eventBridgeSocketDeployeventBridgeSocketDeployapiA13E2D47",
+        },
         "IntegrationType": "AWS_PROXY",
-        "IntegrationUri": Object {
-          "Fn::Join": Array [
+        "IntegrationUri": {
+          "Fn::Join": [
             "",
-            Array [
-              "arn:aws:apigateway:",
-              Object {
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition",
+              },
+              ":apigateway:",
+              {
                 "Ref": "AWS::Region",
               },
               ":lambda:path/2015-03-31/functions/",
-              Object {
-                "Fn::GetAtt": Array [
+              {
+                "Fn::GetAtt": [
                   "eventBridgeSocketDeployonconnectAE0ACD17",
                   "Arn",
                 ],
@@ -127,20 +124,57 @@ Object {
       },
       "Type": "AWS::ApiGatewayV2::Integration",
     },
-    "eventBridgeSocketDeployconnectrouteE4B2A96E": Object {
-      "Properties": Object {
-        "ApiId": Object {
-          "Ref": "eventBridgeSocketDeployeventBridgeSocketDeployapi37537039",
+    "eventBridgeSocketDeployeventBridgeSocketDeployapiconnectRouteConnectIntegrationPermissionD41BB7B4": {
+      "Properties": {
+        "Action": "lambda:InvokeFunction",
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "eventBridgeSocketDeployonconnectAE0ACD17",
+            "Arn",
+          ],
+        },
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition",
+              },
+              ":execute-api:",
+              {
+                "Ref": "AWS::Region",
+              },
+              ":",
+              {
+                "Ref": "AWS::AccountId",
+              },
+              ":",
+              {
+                "Ref": "eventBridgeSocketDeployeventBridgeSocketDeployapiA13E2D47",
+              },
+              "/*/*$connect",
+            ],
+          ],
+        },
+      },
+      "Type": "AWS::Lambda::Permission",
+    },
+    "eventBridgeSocketDeployeventBridgeSocketDeployapidisconnectRoute5AA2FBC6": {
+      "Properties": {
+        "ApiId": {
+          "Ref": "eventBridgeSocketDeployeventBridgeSocketDeployapiA13E2D47",
         },
         "AuthorizationType": "NONE",
-        "RouteKey": "$connect",
-        "Target": Object {
-          "Fn::Join": Array [
+        "RouteKey": "$disconnect",
+        "Target": {
+          "Fn::Join": [
             "",
-            Array [
+            [
               "integrations/",
-              Object {
-                "Ref": "eventBridgeSocketDeployconnectlambdaintegrationA9D7FA28",
+              {
+                "Ref": "eventBridgeSocketDeployeventBridgeSocketDeployapidisconnectRouteDisconnectIntegrationBA93024C",
               },
             ],
           ],
@@ -148,29 +182,27 @@ Object {
       },
       "Type": "AWS::ApiGatewayV2::Route",
     },
-    "eventBridgeSocketDeploydisconnectlambdaintegration96C39EB8": Object {
-      "Properties": Object {
-        "ApiId": Object {
-          "Ref": "eventBridgeSocketDeployeventBridgeSocketDeployapi37537039",
-        },
-        "CredentialsArn": Object {
-          "Fn::GetAtt": Array [
-            "eventBridgeSocketDeployeventBridgeSocketDeployapiiamrole5B0A9275",
-            "Arn",
-          ],
+    "eventBridgeSocketDeployeventBridgeSocketDeployapidisconnectRouteDisconnectIntegrationBA93024C": {
+      "Properties": {
+        "ApiId": {
+          "Ref": "eventBridgeSocketDeployeventBridgeSocketDeployapiA13E2D47",
         },
         "IntegrationType": "AWS_PROXY",
-        "IntegrationUri": Object {
-          "Fn::Join": Array [
+        "IntegrationUri": {
+          "Fn::Join": [
             "",
-            Array [
-              "arn:aws:apigateway:",
-              Object {
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition",
+              },
+              ":apigateway:",
+              {
                 "Ref": "AWS::Region",
               },
               ":lambda:path/2015-03-31/functions/",
-              Object {
-                "Fn::GetAtt": Array [
+              {
+                "Fn::GetAtt": [
                   "eventBridgeSocketDeployondisconnect0F61A161",
                   "Arn",
                 ],
@@ -182,133 +214,69 @@ Object {
       },
       "Type": "AWS::ApiGatewayV2::Integration",
     },
-    "eventBridgeSocketDeploydisconnectroute371DB6DD": Object {
-      "Properties": Object {
-        "ApiId": Object {
-          "Ref": "eventBridgeSocketDeployeventBridgeSocketDeployapi37537039",
+    "eventBridgeSocketDeployeventBridgeSocketDeployapidisconnectRouteDisconnectIntegrationPermissionE9EE2967": {
+      "Properties": {
+        "Action": "lambda:InvokeFunction",
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "eventBridgeSocketDeployondisconnect0F61A161",
+            "Arn",
+          ],
         },
-        "AuthorizationType": "NONE",
-        "RouteKey": "$disconnect",
-        "Target": Object {
-          "Fn::Join": Array [
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
             "",
-            Array [
-              "integrations/",
-              Object {
-                "Ref": "eventBridgeSocketDeploydisconnectlambdaintegration96C39EB8",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition",
               },
+              ":execute-api:",
+              {
+                "Ref": "AWS::Region",
+              },
+              ":",
+              {
+                "Ref": "AWS::AccountId",
+              },
+              ":",
+              {
+                "Ref": "eventBridgeSocketDeployeventBridgeSocketDeployapiA13E2D47",
+              },
+              "/*/*$disconnect",
             ],
           ],
         },
       },
-      "Type": "AWS::ApiGatewayV2::Route",
+      "Type": "AWS::Lambda::Permission",
     },
-    "eventBridgeSocketDeployeventBridgeSocketDeployapi37537039": Object {
-      "Properties": Object {
-        "Name": "EventBridgeSockets",
-        "ProtocolType": "WEBSOCKET",
-        "RouteSelectionExpression": "$request.body.action",
-      },
-      "Type": "AWS::ApiGatewayV2::Api",
-    },
-    "eventBridgeSocketDeployeventBridgeSocketDeployapideploymentBB543A98": Object {
-      "DependsOn": Array [
-        "eventBridgeSocketDeployconnectrouteE4B2A96E",
-        "eventBridgeSocketDeploydisconnectroute371DB6DD",
-      ],
-      "Properties": Object {
-        "ApiId": Object {
-          "Ref": "eventBridgeSocketDeployeventBridgeSocketDeployapi37537039",
-        },
-      },
-      "Type": "AWS::ApiGatewayV2::Deployment",
-    },
-    "eventBridgeSocketDeployeventBridgeSocketDeployapiiamrole5B0A9275": Object {
-      "Properties": Object {
-        "AssumeRolePolicyDocument": Object {
-          "Statement": Array [
-            Object {
-              "Action": "sts:AssumeRole",
-              "Effect": "Allow",
-              "Principal": Object {
-                "Service": "apigateway.amazonaws.com",
-              },
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-      },
-      "Type": "AWS::IAM::Role",
-    },
-    "eventBridgeSocketDeployeventBridgeSocketDeployapiiamroleDefaultPolicy11C8AA27": Object {
-      "Properties": Object {
-        "PolicyDocument": Object {
-          "Statement": Array [
-            Object {
-              "Action": "lambda:InvokeFunction",
-              "Effect": "Allow",
-              "Resource": Array [
-                Object {
-                  "Fn::GetAtt": Array [
-                    "eventBridgeSocketDeployonconnectAE0ACD17",
-                    "Arn",
-                  ],
-                },
-                Object {
-                  "Fn::GetAtt": Array [
-                    "eventBridgeSocketDeployondisconnect0F61A161",
-                    "Arn",
-                  ],
-                },
-                Object {
-                  "Fn::GetAtt": Array [
-                    "eventBridgeSocketDeployeventbridgebroker1D8651C6",
-                    "Arn",
-                  ],
-                },
-              ],
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-        "PolicyName": "eventBridgeSocketDeployeventBridgeSocketDeployapiiamroleDefaultPolicy11C8AA27",
-        "Roles": Array [
-          Object {
-            "Ref": "eventBridgeSocketDeployeventBridgeSocketDeployapiiamrole5B0A9275",
-          },
-        ],
-      },
-      "Type": "AWS::IAM::Policy",
-    },
-    "eventBridgeSocketDeployeventBridgeSocketDeployapistage1336E4D7": Object {
-      "Properties": Object {
-        "ApiId": Object {
-          "Ref": "eventBridgeSocketDeployeventBridgeSocketDeployapi37537039",
+    "eventBridgeSocketDeployeventBridgeSocketDeployapistage6E463CF6": {
+      "Properties": {
+        "ApiId": {
+          "Ref": "eventBridgeSocketDeployeventBridgeSocketDeployapiA13E2D47",
         },
         "AutoDeploy": true,
-        "DeploymentId": Object {
-          "Ref": "eventBridgeSocketDeployeventBridgeSocketDeployapideploymentBB543A98",
-        },
         "StageName": "dev",
       },
       "Type": "AWS::ApiGatewayV2::Stage",
     },
-    "eventBridgeSocketDeployeventBridgeSocketDeployconnectionstable5C7E957A": Object {
+    "eventBridgeSocketDeployeventBridgeSocketDeployconnectionstable5C7E957A": {
       "DeletionPolicy": "Delete",
-      "Properties": Object {
-        "AttributeDefinitions": Array [
-          Object {
+      "Properties": {
+        "AttributeDefinitions": [
+          {
             "AttributeName": "connectionId",
             "AttributeType": "S",
           },
         ],
-        "KeySchema": Array [
-          Object {
+        "KeySchema": [
+          {
             "AttributeName": "connectionId",
             "KeyType": "HASH",
           },
         ],
-        "ProvisionedThroughput": Object {
+        "ProvisionedThroughput": {
           "ReadCapacityUnits": 5,
           "WriteCapacityUnits": 5,
         },
@@ -317,60 +285,29 @@ Object {
       "Type": "AWS::DynamoDB::Table",
       "UpdateReplacePolicy": "Delete",
     },
-    "eventBridgeSocketDeployeventbridgebroker1D8651C6": Object {
-      "DependsOn": Array [
+    "eventBridgeSocketDeployeventbridgebroker1D8651C6": {
+      "DependsOn": [
         "eventBridgeSocketDeployeventbridgebrokerServiceRoleDefaultPolicy5D548830",
         "eventBridgeSocketDeployeventbridgebrokerServiceRoleE80F517C",
       ],
-      "Properties": Object {
-        "Code": Object {
-          "S3Bucket": Object {
-            "Ref": "AssetParameters189f2c91281e177eada2df4ac00eb351945e4c57f6d22baffa28e6838cf9d8f4S3Bucket210A09A6",
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": Object {
-            "Fn::Join": Array [
-              "",
-              Array [
-                Object {
-                  "Fn::Select": Array [
-                    0,
-                    Object {
-                      "Fn::Split": Array [
-                        "||",
-                        Object {
-                          "Ref": "AssetParameters189f2c91281e177eada2df4ac00eb351945e4c57f6d22baffa28e6838cf9d8f4S3VersionKey996026C1",
-                        },
-                      ],
-                    },
-                  ],
-                },
-                Object {
-                  "Fn::Select": Array [
-                    1,
-                    Object {
-                      "Fn::Split": Array [
-                        "||",
-                        Object {
-                          "Ref": "AssetParameters189f2c91281e177eada2df4ac00eb351945e4c57f6d22baffa28e6838cf9d8f4S3VersionKey996026C1",
-                        },
-                      ],
-                    },
-                  ],
-                },
-              ],
-            ],
-          },
+          "S3Key": "3e0a0f754714a39c50b8d4b23a69e2ffea1ff6f186f10c257f57b04f17740569.zip",
         },
-        "Environment": Object {
-          "Variables": Object {
+        "Environment": {
+          "Variables": {
+            "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1",
             "TABLE_NAME": "eventBridgeSocketDeploy-connections-table",
-            "WEBSOCKET_API": Object {
-              "Fn::Join": Array [
+            "WEBSOCKET_API": {
+              "Fn::Join": [
                 "",
-                Array [
-                  Object {
-                    "Fn::GetAtt": Array [
-                      "eventBridgeSocketDeployeventBridgeSocketDeployapi37537039",
+                [
+                  {
+                    "Fn::GetAtt": [
+                      "eventBridgeSocketDeployeventBridgeSocketDeployapiA13E2D47",
                       "ApiEndpoint",
                     ],
                   },
@@ -380,10 +317,10 @@ Object {
             },
           },
         },
-        "Handler": "eventbridge-broker.handler",
+        "Handler": "index.handler",
         "MemorySize": 256,
-        "Role": Object {
-          "Fn::GetAtt": Array [
+        "Role": {
+          "Fn::GetAtt": [
             "eventBridgeSocketDeployeventbridgebrokerServiceRoleE80F517C",
             "Arn",
           ],
@@ -393,36 +330,36 @@ Object {
       },
       "Type": "AWS::Lambda::Function",
     },
-    "eventBridgeSocketDeployeventbridgebrokerServiceRoleDefaultPolicy5D548830": Object {
-      "Properties": Object {
-        "PolicyDocument": Object {
-          "Statement": Array [
-            Object {
+    "eventBridgeSocketDeployeventbridgebrokerServiceRoleDefaultPolicy5D548830": {
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
               "Action": "execute-api:ManageConnections",
               "Effect": "Allow",
-              "Resource": Object {
-                "Fn::Join": Array [
+              "Resource": {
+                "Fn::Join": [
                   "",
-                  Array [
+                  [
                     "arn:aws:execute-api:",
-                    Object {
+                    {
                       "Ref": "AWS::Region",
                     },
                     ":",
-                    Object {
+                    {
                       "Ref": "AWS::AccountId",
                     },
                     ":",
-                    Object {
-                      "Ref": "eventBridgeSocketDeployeventBridgeSocketDeployapi37537039",
+                    {
+                      "Ref": "eventBridgeSocketDeployeventBridgeSocketDeployapiA13E2D47",
                     },
                     "/*",
                   ],
                 ],
               },
             },
-            Object {
-              "Action": Array [
+            {
+              "Action": [
                 "dynamodb:BatchGetItem",
                 "dynamodb:GetRecords",
                 "dynamodb:GetShardIterator",
@@ -434,16 +371,17 @@ Object {
                 "dynamodb:PutItem",
                 "dynamodb:UpdateItem",
                 "dynamodb:DeleteItem",
+                "dynamodb:DescribeTable",
               ],
               "Effect": "Allow",
-              "Resource": Array [
-                Object {
-                  "Fn::GetAtt": Array [
+              "Resource": [
+                {
+                  "Fn::GetAtt": [
                     "eventBridgeSocketDeployeventBridgeSocketDeployconnectionstable5C7E957A",
                     "Arn",
                   ],
                 },
-                Object {
+                {
                   "Ref": "AWS::NoValue",
                 },
               ],
@@ -452,35 +390,35 @@ Object {
           "Version": "2012-10-17",
         },
         "PolicyName": "eventBridgeSocketDeployeventbridgebrokerServiceRoleDefaultPolicy5D548830",
-        "Roles": Array [
-          Object {
+        "Roles": [
+          {
             "Ref": "eventBridgeSocketDeployeventbridgebrokerServiceRoleE80F517C",
           },
         ],
       },
       "Type": "AWS::IAM::Policy",
     },
-    "eventBridgeSocketDeployeventbridgebrokerServiceRoleE80F517C": Object {
-      "Properties": Object {
-        "AssumeRolePolicyDocument": Object {
-          "Statement": Array [
-            Object {
+    "eventBridgeSocketDeployeventbridgebrokerServiceRoleE80F517C": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
               "Action": "sts:AssumeRole",
               "Effect": "Allow",
-              "Principal": Object {
+              "Principal": {
                 "Service": "lambda.amazonaws.com",
               },
             },
           ],
           "Version": "2012-10-17",
         },
-        "ManagedPolicyArns": Array [
-          Object {
-            "Fn::Join": Array [
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
               "",
-              Array [
+              [
                 "arn:",
-                Object {
+                {
                   "Ref": "AWS::Partition",
                 },
                 ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
@@ -491,59 +429,28 @@ Object {
       },
       "Type": "AWS::IAM::Role",
     },
-    "eventBridgeSocketDeployonconnectAE0ACD17": Object {
-      "DependsOn": Array [
+    "eventBridgeSocketDeployonconnectAE0ACD17": {
+      "DependsOn": [
         "eventBridgeSocketDeployonconnectServiceRoleDefaultPolicy4A968F2B",
         "eventBridgeSocketDeployonconnectServiceRole1FF5024C",
       ],
-      "Properties": Object {
-        "Code": Object {
-          "S3Bucket": Object {
-            "Ref": "AssetParameters58b44f089530a411338be00d6a42306e54315ad4296be77451fa81c7742b2a9aS3Bucket18FBAF40",
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": Object {
-            "Fn::Join": Array [
-              "",
-              Array [
-                Object {
-                  "Fn::Select": Array [
-                    0,
-                    Object {
-                      "Fn::Split": Array [
-                        "||",
-                        Object {
-                          "Ref": "AssetParameters58b44f089530a411338be00d6a42306e54315ad4296be77451fa81c7742b2a9aS3VersionKey5C07FCF9",
-                        },
-                      ],
-                    },
-                  ],
-                },
-                Object {
-                  "Fn::Select": Array [
-                    1,
-                    Object {
-                      "Fn::Split": Array [
-                        "||",
-                        Object {
-                          "Ref": "AssetParameters58b44f089530a411338be00d6a42306e54315ad4296be77451fa81c7742b2a9aS3VersionKey5C07FCF9",
-                        },
-                      ],
-                    },
-                  ],
-                },
-              ],
-            ],
-          },
+          "S3Key": "4f01e914844845f11b6174e080bfffadb0a98682f38ba6aa56cbf3bc2308c0d2.zip",
         },
-        "Environment": Object {
-          "Variables": Object {
+        "Environment": {
+          "Variables": {
+            "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1",
             "TABLE_NAME": "eventBridgeSocketDeploy-connections-table",
           },
         },
-        "Handler": "on-connect.handler",
+        "Handler": "index.handler",
         "MemorySize": 256,
-        "Role": Object {
-          "Fn::GetAtt": Array [
+        "Role": {
+          "Fn::GetAtt": [
             "eventBridgeSocketDeployonconnectServiceRole1FF5024C",
             "Arn",
           ],
@@ -553,27 +460,27 @@ Object {
       },
       "Type": "AWS::Lambda::Function",
     },
-    "eventBridgeSocketDeployonconnectServiceRole1FF5024C": Object {
-      "Properties": Object {
-        "AssumeRolePolicyDocument": Object {
-          "Statement": Array [
-            Object {
+    "eventBridgeSocketDeployonconnectServiceRole1FF5024C": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
               "Action": "sts:AssumeRole",
               "Effect": "Allow",
-              "Principal": Object {
+              "Principal": {
                 "Service": "lambda.amazonaws.com",
               },
             },
           ],
           "Version": "2012-10-17",
         },
-        "ManagedPolicyArns": Array [
-          Object {
-            "Fn::Join": Array [
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
               "",
-              Array [
+              [
                 "arn:",
-                Object {
+                {
                   "Ref": "AWS::Partition",
                 },
                 ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
@@ -584,12 +491,12 @@ Object {
       },
       "Type": "AWS::IAM::Role",
     },
-    "eventBridgeSocketDeployonconnectServiceRoleDefaultPolicy4A968F2B": Object {
-      "Properties": Object {
-        "PolicyDocument": Object {
-          "Statement": Array [
-            Object {
-              "Action": Array [
+    "eventBridgeSocketDeployonconnectServiceRoleDefaultPolicy4A968F2B": {
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
                 "dynamodb:BatchGetItem",
                 "dynamodb:GetRecords",
                 "dynamodb:GetShardIterator",
@@ -601,16 +508,17 @@ Object {
                 "dynamodb:PutItem",
                 "dynamodb:UpdateItem",
                 "dynamodb:DeleteItem",
+                "dynamodb:DescribeTable",
               ],
               "Effect": "Allow",
-              "Resource": Array [
-                Object {
-                  "Fn::GetAtt": Array [
+              "Resource": [
+                {
+                  "Fn::GetAtt": [
                     "eventBridgeSocketDeployeventBridgeSocketDeployconnectionstable5C7E957A",
                     "Arn",
                   ],
                 },
-                Object {
+                {
                   "Ref": "AWS::NoValue",
                 },
               ],
@@ -619,67 +527,36 @@ Object {
           "Version": "2012-10-17",
         },
         "PolicyName": "eventBridgeSocketDeployonconnectServiceRoleDefaultPolicy4A968F2B",
-        "Roles": Array [
-          Object {
+        "Roles": [
+          {
             "Ref": "eventBridgeSocketDeployonconnectServiceRole1FF5024C",
           },
         ],
       },
       "Type": "AWS::IAM::Policy",
     },
-    "eventBridgeSocketDeployondisconnect0F61A161": Object {
-      "DependsOn": Array [
+    "eventBridgeSocketDeployondisconnect0F61A161": {
+      "DependsOn": [
         "eventBridgeSocketDeployondisconnectServiceRoleDefaultPolicyC9FDF75A",
         "eventBridgeSocketDeployondisconnectServiceRoleA5D3C57B",
       ],
-      "Properties": Object {
-        "Code": Object {
-          "S3Bucket": Object {
-            "Ref": "AssetParametersa6c413ff98ccb54bd991dedcc0fab2635afc75162f4f3b980e2906d1e87d802aS3BucketE6FA6158",
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": Object {
-            "Fn::Join": Array [
-              "",
-              Array [
-                Object {
-                  "Fn::Select": Array [
-                    0,
-                    Object {
-                      "Fn::Split": Array [
-                        "||",
-                        Object {
-                          "Ref": "AssetParametersa6c413ff98ccb54bd991dedcc0fab2635afc75162f4f3b980e2906d1e87d802aS3VersionKey824648E8",
-                        },
-                      ],
-                    },
-                  ],
-                },
-                Object {
-                  "Fn::Select": Array [
-                    1,
-                    Object {
-                      "Fn::Split": Array [
-                        "||",
-                        Object {
-                          "Ref": "AssetParametersa6c413ff98ccb54bd991dedcc0fab2635afc75162f4f3b980e2906d1e87d802aS3VersionKey824648E8",
-                        },
-                      ],
-                    },
-                  ],
-                },
-              ],
-            ],
-          },
+          "S3Key": "2b050c71a6a7b379a7c5b3fd469afd7298be1624ff329df60bf2f37b2a5150a9.zip",
         },
-        "Environment": Object {
-          "Variables": Object {
+        "Environment": {
+          "Variables": {
+            "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1",
             "TABLE_NAME": "eventBridgeSocketDeploy-connections-table",
           },
         },
-        "Handler": "on-disconnect.handler",
+        "Handler": "index.handler",
         "MemorySize": 256,
-        "Role": Object {
-          "Fn::GetAtt": Array [
+        "Role": {
+          "Fn::GetAtt": [
             "eventBridgeSocketDeployondisconnectServiceRoleA5D3C57B",
             "Arn",
           ],
@@ -689,27 +566,27 @@ Object {
       },
       "Type": "AWS::Lambda::Function",
     },
-    "eventBridgeSocketDeployondisconnectServiceRoleA5D3C57B": Object {
-      "Properties": Object {
-        "AssumeRolePolicyDocument": Object {
-          "Statement": Array [
-            Object {
+    "eventBridgeSocketDeployondisconnectServiceRoleA5D3C57B": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
               "Action": "sts:AssumeRole",
               "Effect": "Allow",
-              "Principal": Object {
+              "Principal": {
                 "Service": "lambda.amazonaws.com",
               },
             },
           ],
           "Version": "2012-10-17",
         },
-        "ManagedPolicyArns": Array [
-          Object {
-            "Fn::Join": Array [
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
               "",
-              Array [
+              [
                 "arn:",
-                Object {
+                {
                   "Ref": "AWS::Partition",
                 },
                 ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
@@ -720,12 +597,12 @@ Object {
       },
       "Type": "AWS::IAM::Role",
     },
-    "eventBridgeSocketDeployondisconnectServiceRoleDefaultPolicyC9FDF75A": Object {
-      "Properties": Object {
-        "PolicyDocument": Object {
-          "Statement": Array [
-            Object {
-              "Action": Array [
+    "eventBridgeSocketDeployondisconnectServiceRoleDefaultPolicyC9FDF75A": {
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
                 "dynamodb:BatchGetItem",
                 "dynamodb:GetRecords",
                 "dynamodb:GetShardIterator",
@@ -737,16 +614,17 @@ Object {
                 "dynamodb:PutItem",
                 "dynamodb:UpdateItem",
                 "dynamodb:DeleteItem",
+                "dynamodb:DescribeTable",
               ],
               "Effect": "Allow",
-              "Resource": Array [
-                Object {
-                  "Fn::GetAtt": Array [
+              "Resource": [
+                {
+                  "Fn::GetAtt": [
                     "eventBridgeSocketDeployeventBridgeSocketDeployconnectionstable5C7E957A",
                     "Arn",
                   ],
                 },
-                Object {
+                {
                   "Ref": "AWS::NoValue",
                 },
               ],
@@ -755,8 +633,8 @@ Object {
           "Version": "2012-10-17",
         },
         "PolicyName": "eventBridgeSocketDeployondisconnectServiceRoleDefaultPolicyC9FDF75A",
-        "Roles": Array [
-          Object {
+        "Roles": [
+          {
             "Ref": "eventBridgeSocketDeployondisconnectServiceRoleA5D3C57B",
           },
         ],
