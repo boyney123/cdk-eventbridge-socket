@@ -103,7 +103,7 @@ export class EventBridgeWebSocket extends Construct {
   private createFunction(name: string, tableName: string, options: any = {}) {
     return new NodejsFunction(this, name, {
       entry: path.join(__dirname, `../lambda-fns/${name}/${name}.ts`),
-      runtime: Runtime.NODEJS_12_X,
+      runtime: Runtime.NODEJS_16_X,
       timeout: Duration.seconds(300),
       memorySize: 256,
       environment: {

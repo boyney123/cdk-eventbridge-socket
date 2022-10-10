@@ -439,7 +439,7 @@ exports[`EventBridgeWebSocket snapshot test EventsRuleToSns default params 1`] =
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "4f01e914844845f11b6174e080bfffadb0a98682f38ba6aa56cbf3bc2308c0d2.zip",
+          "S3Key": "be8b79db12a597f3dc5261b1a0e10076d941e1cf1173a0d5fbcf2a110295c894.zip",
         },
         "Environment": {
           "Variables": {
@@ -545,7 +545,7 @@ exports[`EventBridgeWebSocket snapshot test EventsRuleToSns default params 1`] =
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "2b050c71a6a7b379a7c5b3fd469afd7298be1624ff329df60bf2f37b2a5150a9.zip",
+          "S3Key": "1fde69467283d6bb392c3f58ccb435b2492c4ac548424b8c9a899ce697d94519.zip",
         },
         "Environment": {
           "Variables": {
