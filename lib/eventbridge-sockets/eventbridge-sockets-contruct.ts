@@ -1,6 +1,6 @@
 import { CfnOutput, Duration, RemovalPolicy, Stack } from "aws-cdk-lib";
-import { AttributeType, Table } from "aws-cdk-lib/aws-dynamodb";
-import { AssetCode, Function, Runtime } from "aws-cdk-lib/aws-lambda";
+import { AttributeType, BillingMode, Table } from "aws-cdk-lib/aws-dynamodb";
+import { Runtime } from "aws-cdk-lib/aws-lambda";
 import { EventBus, EventPattern, Rule } from "aws-cdk-lib/aws-events";
 import { Effect, PolicyStatement } from "aws-cdk-lib/aws-iam";
 import { Construct } from "constructs";
