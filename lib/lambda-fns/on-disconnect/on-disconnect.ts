@@ -16,10 +16,7 @@ export const handler = async (event: any) => {
   try {
     await DynamoDBTable.delete(deleteParams).promise();
   } catch (err) {
-    return {
-      statusCode: 500,
-      body: 'Failed to disconnect: ' + JSON.stringify(err),
-    };
+    return { statusCode: 500, body: 'Failed to disconnect: ' + JSON.stringify(err) };
   }
 
   return { statusCode: 200, body: 'Disconnected' };

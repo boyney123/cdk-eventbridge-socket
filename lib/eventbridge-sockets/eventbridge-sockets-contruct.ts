@@ -53,25 +53,19 @@ export class EventBridgeWebSocket extends Construct {
      */
     const connectFunc = this.createFunction('on-connect', tableName);
     const disconnectFunc = this.createFunction('on-disconnect', tableName);
-    const eventBridgeBrokerFunc = this.createFunction(
-      'eventbridge-broker',
-      tableName,
-      {
-        initialPolicy: [
-          new PolicyStatement({
-            actions: ['execute-api:ManageConnections'],
-            resources: [
-              `arn:aws:execute-api:${region}:${accountId}:${api.apiId}/*`,
-            ],
-            effect: Effect.ALLOW,
-          }),
-        ],
-        environment: {
-          TABLE_NAME: tableName,
-          WEBSOCKET_API: `${api.apiEndpoint}/${stage}`,
-        },
-      }
-    );
+    const eventBridgeBrokerFunc = this.createFunction('eventbridge-broker', tableName, {
+      initialPolicy: [
+        new PolicyStatement({
+          actions: ['execute-api:ManageConnections'],
+          resources: [`arn:aws:execute-api:${region}:${accountId}:${api.apiId}/*`],
+          effect: Effect.ALLOW,
+        }),
+      ],
+      environment: {
+        TABLE_NAME: tableName,
+        WEBSOCKET_API: `${api.apiEndpoint}/${stage}`,
+      },
+    });
 
     table.grantReadWriteData(connectFunc);
     table.grantReadWriteData(disconnectFunc);
@@ -79,16 +73,10 @@ export class EventBridgeWebSocket extends Construct {
 
     // create routes for API Gateway
     api.addRoute('$connect', {
-      integration: new WebSocketLambdaIntegration(
-        'ConnectIntegration',
-        connectFunc
-      ),
+      integration: new WebSocketLambdaIntegration('ConnectIntegration', connectFunc),
     });
     api.addRoute('$disconnect', {
-      integration: new WebSocketLambdaIntegration(
-        'DisconnectIntegration',
-        disconnectFunc
-      ),
+      integration: new WebSocketLambdaIntegration('DisconnectIntegration', disconnectFunc),
     });
 
     new WebSocketStage(this, `${name}-stage`, {

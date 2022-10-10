@@ -1,8 +1,4 @@
-import {
-  SynthUtils,
-  expect as expectCDK,
-  haveResourceLike,
-} from '@aws-cdk/assert';
+import { SynthUtils, expect as expectCDK, haveResourceLike } from '@aws-cdk/assert';
 import { Stack } from 'aws-cdk-lib';
 import { Template } from 'aws-cdk-lib/assertions';
 import { EventBridgeWebSocket } from '../lib';
@@ -95,10 +91,7 @@ describe('EventBridgeWebSocket', () => {
             },
             ':lambda:path/2015-03-31/functions/',
             {
-              'Fn::GetAtt': [
-                'eventBridgeSocketDeployondisconnect0F61A161',
-                'Arn',
-              ],
+              'Fn::GetAtt': ['eventBridgeSocketDeployondisconnect0F61A161', 'Arn'],
             },
             '/invocations',
           ],

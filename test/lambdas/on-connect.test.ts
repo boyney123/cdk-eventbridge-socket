@@ -23,9 +23,7 @@ jest.mock('aws-sdk', () => ({
 describe('on-connection lambda function', () => {
   it('takes the given event (websocket connection) and writes the connection to DynamoDB', async () => {
     const response = await onConnect.handler(event);
-    expect(mockDocumentPut).toHaveBeenCalledWith([
-      { Item: { connectionId: 1 }, TableName: 'connections' },
-    ]);
+    expect(mockDocumentPut).toHaveBeenCalledWith([{ Item: { connectionId: 1 }, TableName: 'connections' }]);
     expect(response).toEqual({
       statusCode: 200,
       body: 'Connected',

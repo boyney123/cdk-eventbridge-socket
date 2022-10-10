@@ -23,9 +23,7 @@ jest.mock('aws-sdk', () => ({
 describe('on-connection lambda function', () => {
   it('takes the given event (websocket connection) and deleted the connection to DynamoDB', async () => {
     const response = await onDisconnect.handler(event);
-    expect(mockDocumentDelete).toHaveBeenCalledWith([
-      { Key: { connectionId: 1 }, TableName: 'connections' },
-    ]);
+    expect(mockDocumentDelete).toHaveBeenCalledWith([{ Key: { connectionId: 1 }, TableName: 'connections' }]);
     expect(response).toEqual({
       statusCode: 200,
       body: 'Disconnected',

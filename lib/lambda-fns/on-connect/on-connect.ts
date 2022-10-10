@@ -17,10 +17,7 @@ export const handler = async (event: any) => {
   try {
     await ddb.put(putParams).promise();
   } catch (err) {
-    return {
-      statusCode: 500,
-      body: 'Failed to connect: ' + JSON.stringify(err),
-    };
+    return { statusCode: 500, body: 'Failed to connect: ' + JSON.stringify(err) };
   }
 
   return { statusCode: 200, body: 'Connected' };
