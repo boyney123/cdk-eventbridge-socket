@@ -1,17 +1,17 @@
-import * as AWS from "aws-sdk";
+import * as AWS from 'aws-sdk';
 
 const { TABLE_NAME, WEBSOCKET_API } = process.env;
 if (!(TABLE_NAME || WEBSOCKET_API)) {
-  throw new Error("Missing required environment variables");
+  throw new Error('Missing required environment variables');
 }
 
 const ddbTable = new AWS.DynamoDB.DocumentClient({
-  apiVersion: "2012-08-10",
+  apiVersion: '2012-08-10',
   region: process.env.AWS_REGION,
 });
 
 const apigateway = new AWS.ApiGatewayManagementApi({
-  endpoint: WEBSOCKET_API?.replace("wss", "https"),
+  endpoint: WEBSOCKET_API?.replace('wss', 'https'),
 });
 
 export const handler = async (event: any) => {
@@ -19,13 +19,13 @@ export const handler = async (event: any) => {
 
   try {
     connectionData = await ddbTable
-      .scan({ TableName: TABLE_NAME!, ProjectionExpression: "connectionId" })
+      .scan({ TableName: TABLE_NAME!, ProjectionExpression: 'connectionId' })
       .promise();
   } catch (e) {
     if (e instanceof Error) {
       return { statusCode: 500, body: e.stack };
     }
-    return { statusCode: 500, body: "unkown error" };
+    return { statusCode: 500, body: 'unkown error' };
   }
 
   const postCalls = connectionData.Items?.map(async ({ connectionId }: any) => {
@@ -58,5 +58,5 @@ export const handler = async (event: any) => {
     };
   }
 
-  return { statusCode: 200, body: "Data sent." };
+  return { statusCode: 200, body: 'Data sent.' };
 };

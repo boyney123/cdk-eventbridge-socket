@@ -2,119 +2,119 @@ import {
   SynthUtils,
   expect as expectCDK,
   haveResourceLike,
-} from "@aws-cdk/assert";
-import { Stack } from "aws-cdk-lib";
-import { Template } from "aws-cdk-lib/assertions";
-import { EventBridgeWebSocket } from "../lib";
+} from '@aws-cdk/assert';
+import { Stack } from 'aws-cdk-lib';
+import { Template } from 'aws-cdk-lib/assertions';
+import { EventBridgeWebSocket } from '../lib';
 
-describe("EventBridgeWebSocket", () => {
-  it("snapshot test EventsRuleToSns default params", () => {
+describe('EventBridgeWebSocket', () => {
+  it('snapshot test EventsRuleToSns default params', () => {
     const stack = new Stack();
-    new EventBridgeWebSocket(stack, "eventBridgeSocketDeploy", {
-      bus: "my-random-bus",
+    new EventBridgeWebSocket(stack, 'eventBridgeSocketDeploy', {
+      bus: 'my-random-bus',
       eventPattern: {
-        account: ["my-account"],
+        account: ['my-account'],
       },
-      stage: "dev",
+      stage: 'dev',
     });
     expect(SynthUtils.toCloudFormation(stack)).toMatchSnapshot();
   });
 
-  it("creates an API Gateway WEBSOCKET with onconnect and ondisconnect integrations", () => {
+  it('creates an API Gateway WEBSOCKET with onconnect and ondisconnect integrations', () => {
     const stack = new Stack();
 
-    new EventBridgeWebSocket(stack, "eventBridgeSocketDeploy", {
-      bus: "my-random-bus",
+    new EventBridgeWebSocket(stack, 'eventBridgeSocketDeploy', {
+      bus: 'my-random-bus',
       eventPattern: {
-        account: ["my-account"],
+        account: ['my-account'],
       },
-      stage: "dev",
+      stage: 'dev',
     });
     const template = Template.fromStack(stack);
     // console.log(JSON.stringify(SynthUtils.toCloudFormation(stack), null, 4));
     expectCDK(stack).to(
-      haveResourceLike("AWS::ApiGatewayV2::Api", {
-        Name: "EventBridgeSockets",
-        ProtocolType: "WEBSOCKET",
-        RouteSelectionExpression: "$request.body.action",
+      haveResourceLike('AWS::ApiGatewayV2::Api', {
+        Name: 'EventBridgeSockets',
+        ProtocolType: 'WEBSOCKET',
+        RouteSelectionExpression: '$request.body.action',
       })
     );
 
     // on connect integration
-    template.hasResourceProperties("AWS::ApiGatewayV2::Integration", {
-      IntegrationType: "AWS_PROXY",
+    template.hasResourceProperties('AWS::ApiGatewayV2::Integration', {
+      IntegrationType: 'AWS_PROXY',
       IntegrationUri: {
-        "Fn::Join": [
-          "",
+        'Fn::Join': [
+          '',
           [
-            "arn:",
+            'arn:',
             {
-              Ref: "AWS::Partition",
+              Ref: 'AWS::Partition',
             },
-            ":apigateway:",
+            ':apigateway:',
             {
-              Ref: "AWS::Region",
+              Ref: 'AWS::Region',
             },
-            ":lambda:path/2015-03-31/functions/",
+            ':lambda:path/2015-03-31/functions/',
             {
-              "Fn::GetAtt": ["eventBridgeSocketDeployonconnectAE0ACD17", "Arn"],
+              'Fn::GetAtt': ['eventBridgeSocketDeployonconnectAE0ACD17', 'Arn'],
             },
-            "/invocations",
+            '/invocations',
           ],
         ],
       },
     });
-    template.hasResourceProperties("AWS::ApiGatewayV2::Route", {
-      RouteKey: "$connect",
+    template.hasResourceProperties('AWS::ApiGatewayV2::Route', {
+      RouteKey: '$connect',
       Target: {
-        "Fn::Join": [
-          "",
+        'Fn::Join': [
+          '',
           [
-            "integrations/",
+            'integrations/',
             {
-              Ref: "eventBridgeSocketDeployeventBridgeSocketDeployapiconnectRouteConnectIntegration439F042A",
+              Ref: 'eventBridgeSocketDeployeventBridgeSocketDeployapiconnectRouteConnectIntegration439F042A',
             },
           ],
         ],
       },
     });
 
-    template.hasResourceProperties("AWS::ApiGatewayV2::Integration", {
-      IntegrationType: "AWS_PROXY",
+    template.hasResourceProperties('AWS::ApiGatewayV2::Integration', {
+      IntegrationType: 'AWS_PROXY',
       IntegrationUri: {
-        "Fn::Join": [
-          "",
+        'Fn::Join': [
+          '',
           [
-            "arn:",
+            'arn:',
             {
-              Ref: "AWS::Partition",
+              Ref: 'AWS::Partition',
             },
-            ":apigateway:",
+            ':apigateway:',
             {
-              Ref: "AWS::Region",
+              Ref: 'AWS::Region',
             },
-            ":lambda:path/2015-03-31/functions/",
+            ':lambda:path/2015-03-31/functions/',
             {
-              "Fn::GetAtt": [
-                "eventBridgeSocketDeployondisconnect0F61A161",
-                "Arn",
+              'Fn::GetAtt': [
+                'eventBridgeSocketDeployondisconnect0F61A161',
+                'Arn',
               ],
             },
-            "/invocations",
+            '/invocations',
           ],
         ],
       },
     });
 
-    template.hasResourceProperties("AWS::ApiGatewayV2::Route", {
-      RouteKey: "$disconnect",
+    template.hasResourceProperties('AWS::ApiGatewayV2::Route', {
+      RouteKey: '$disconnect',
       Target: {
-        "Fn::Join": [
-          "",
+        'Fn::Join': [
+          '',
           [
-            "integrations/",
+            'integrations/',
             {
-              Ref: "eventBridgeSocketDeployeventBridgeSocketDeployapidisconnectRouteDisconnectIntegrationBA93024C",
+              Ref: 'eventBridgeSocketDeployeventBridgeSocketDeployapidisconnectRouteDisconnectIntegrationBA93024C',
             },
           ],
         ],
@@ -122,21 +122,21 @@ describe("EventBridgeWebSocket", () => {
     });
   });
 
-  it("creates a new EventBridge rule for given event bus and given event pattern", () => {
+  it('creates a new EventBridge rule for given event bus and given event pattern', () => {
     const stack = new Stack();
-    new EventBridgeWebSocket(stack, "eventBridgeSocketDeploy", {
-      bus: "my-random-bus",
+    new EventBridgeWebSocket(stack, 'eventBridgeSocketDeploy', {
+      bus: 'my-random-bus',
       eventPattern: {
-        account: ["my-account"],
+        account: ['my-account'],
       },
-      stage: "dev",
+      stage: 'dev',
     });
 
     expectCDK(stack).to(
-      haveResourceLike("AWS::Events::Rule", {
-        EventBusName: "my-random-bus",
+      haveResourceLike('AWS::Events::Rule', {
+        EventBusName: 'my-random-bus',
         EventPattern: {
-          account: ["my-account"],
+          account: ['my-account'],
         },
       })
     );

@@ -1,9 +1,9 @@
-import * as AWS from "aws-sdk";
-import { PutItemInput } from "aws-sdk/clients/dynamodb";
+import * as AWS from 'aws-sdk';
+import { PutItemInput } from 'aws-sdk/clients/dynamodb';
 
 export const handler = async (event: any) => {
   const ddb = new AWS.DynamoDB.DocumentClient({
-    apiVersion: "2012-08-10",
+    apiVersion: '2012-08-10',
     region: process.env.AWS_REGION,
   });
 
@@ -19,9 +19,9 @@ export const handler = async (event: any) => {
   } catch (err) {
     return {
       statusCode: 500,
-      body: "Failed to connect: " + JSON.stringify(err),
+      body: 'Failed to connect: ' + JSON.stringify(err),
     };
   }
 
-  return { statusCode: 200, body: "Connected" };
+  return { statusCode: 200, body: 'Connected' };
 };

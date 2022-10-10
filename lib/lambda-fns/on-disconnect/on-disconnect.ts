@@ -1,7 +1,7 @@
-import * as AWS from "aws-sdk";
-import { DeleteItemInput } from "aws-sdk/clients/dynamodb";
+import * as AWS from 'aws-sdk';
+import { DeleteItemInput } from 'aws-sdk/clients/dynamodb';
 const DynamoDBTable = new AWS.DynamoDB.DocumentClient({
-  apiVersion: "2012-08-10",
+  apiVersion: '2012-08-10',
   region: process.env.AWS_REGION,
 });
 
@@ -18,9 +18,9 @@ export const handler = async (event: any) => {
   } catch (err) {
     return {
       statusCode: 500,
-      body: "Failed to disconnect: " + JSON.stringify(err),
+      body: 'Failed to disconnect: ' + JSON.stringify(err),
     };
   }
 
-  return { statusCode: 200, body: "Disconnected" };
+  return { statusCode: 200, body: 'Disconnected' };
 };
