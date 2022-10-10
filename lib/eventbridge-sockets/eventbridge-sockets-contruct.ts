@@ -44,8 +44,7 @@ export class EventBridgeWebSocket extends Construct {
         name: "connectionId",
         type: AttributeType.STRING,
       },
-      readCapacity: 5,
-      writeCapacity: 5,
+      billingMode: BillingMode.PAY_PER_REQUEST,
       removalPolicy: RemovalPolicy.DESTROY,
     });
 
