@@ -1,10 +1,14 @@
-const AWS = require('aws-sdk');
+import * as AWS from 'aws-sdk';
+import { PutItemInput } from 'aws-sdk/clients/dynamodb';
 
-exports.handler = async (event: any) => {
-  const ddb = new AWS.DynamoDB.DocumentClient({ apiVersion: '2012-08-10', region: process.env.AWS_REGION });
+export const handler = async (event: any) => {
+  const ddb = new AWS.DynamoDB.DocumentClient({
+    apiVersion: '2012-08-10',
+    region: process.env.AWS_REGION,
+  });
 
-  const putParams = {
-    TableName: process.env.TABLE_NAME,
+  const putParams: PutItemInput = {
+    TableName: process.env.TABLE_NAME!,
     Item: {
       connectionId: event.requestContext.connectionId,
     },
@@ -18,5 +22,3 @@ exports.handler = async (event: any) => {
 
   return { statusCode: 200, body: 'Connected' };
 };
-
-export {};

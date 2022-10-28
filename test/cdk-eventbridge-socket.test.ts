@@ -1,5 +1,6 @@
 import { SynthUtils, expect as expectCDK, haveResourceLike } from '@aws-cdk/assert';
-import { Stack } from '@aws-cdk/core';
+import { Stack } from 'aws-cdk-lib';
+import { Template } from 'aws-cdk-lib/assertions';
 import { EventBridgeWebSocket } from '../lib';
 
 describe('EventBridgeWebSocket', () => {
@@ -25,7 +26,7 @@ describe('EventBridgeWebSocket', () => {
       },
       stage: 'dev',
     });
-
+    const template = Template.fromStack(stack);
     // console.log(JSON.stringify(SynthUtils.toCloudFormation(stack), null, 4));
     expectCDK(stack).to(
       haveResourceLike('AWS::ApiGatewayV2::Api', {
@@ -36,30 +37,30 @@ describe('EventBridgeWebSocket', () => {
     );
 
     // on connect integration
-    expectCDK(stack).to(
-      haveResourceLike('AWS::ApiGatewayV2::Integration', {
-        IntegrationType: 'AWS_PROXY',
-        IntegrationUri: {
-          'Fn::Join': [
-            '',
-            [
-              'arn:aws:apigateway:',
-              {
-                Ref: 'AWS::Region',
-              },
-              ':lambda:path/2015-03-31/functions/',
-              {
-                'Fn::GetAtt': ['eventBridgeSocketDeployonconnectAE0ACD17', 'Arn'],
-              },
-              '/invocations',
-            ],
+    template.hasResourceProperties('AWS::ApiGatewayV2::Integration', {
+      IntegrationType: 'AWS_PROXY',
+      IntegrationUri: {
+        'Fn::Join': [
+          '',
+          [
+            'arn:',
+            {
+              Ref: 'AWS::Partition',
+            },
+            ':apigateway:',
+            {
+              Ref: 'AWS::Region',
+            },
+            ':lambda:path/2015-03-31/functions/',
+            {
+              'Fn::GetAtt': ['eventBridgeSocketDeployonconnectAE0ACD17', 'Arn'],
+            },
+            '/invocations',
           ],
-        },
-      })
-    );
-
-    // expectCDK(stack).to(
-    haveResourceLike('AWS::ApiGatewayV2::Route', {
+        ],
+      },
+    });
+    template.hasResourceProperties('AWS::ApiGatewayV2::Route', {
       RouteKey: '$connect',
       Target: {
         'Fn::Join': [
@@ -67,51 +68,51 @@ describe('EventBridgeWebSocket', () => {
           [
             'integrations/',
             {
-              Ref: 'eventBridgeSocketDeployeventBridgeSocketDeployapiconnectRouteWebSocketIntegration449f455cb3c7748381eb0f0246ccfa2f05649A15',
+              Ref: 'eventBridgeSocketDeployeventBridgeSocketDeployapiconnectRouteConnectIntegration439F042A',
             },
           ],
         ],
       },
     });
 
-    expectCDK(stack).to(
-      haveResourceLike('AWS::ApiGatewayV2::Integration', {
-        IntegrationType: 'AWS_PROXY',
-        IntegrationUri: {
-          'Fn::Join': [
-            '',
-            [
-              'arn:aws:apigateway:',
-              {
-                Ref: 'AWS::Region',
-              },
-              ':lambda:path/2015-03-31/functions/',
-              {
-                'Fn::GetAtt': ['eventBridgeSocketDeployondisconnect0F61A161', 'Arn'],
-              },
-              '/invocations',
-            ],
+    template.hasResourceProperties('AWS::ApiGatewayV2::Integration', {
+      IntegrationType: 'AWS_PROXY',
+      IntegrationUri: {
+        'Fn::Join': [
+          '',
+          [
+            'arn:',
+            {
+              Ref: 'AWS::Partition',
+            },
+            ':apigateway:',
+            {
+              Ref: 'AWS::Region',
+            },
+            ':lambda:path/2015-03-31/functions/',
+            {
+              'Fn::GetAtt': ['eventBridgeSocketDeployondisconnect0F61A161', 'Arn'],
+            },
+            '/invocations',
           ],
-        },
-      })
-    );
+        ],
+      },
+    });
 
-    expectCDK(stack).to(
-      haveResourceLike('AWS::ApiGatewayV2::Route', {
-        RouteKey: '$disconnect',
-        Target: {
-          'Fn::Join': [
-            '',
-            [
-              'integrations/',
-              {
-                Ref: 'eventBridgeSocketDeploydisconnectlambdaintegration96C39EB8',
-              },
-            ],
+    template.hasResourceProperties('AWS::ApiGatewayV2::Route', {
+      RouteKey: '$disconnect',
+      Target: {
+        'Fn::Join': [
+          '',
+          [
+            'integrations/',
+            {
+              Ref: 'eventBridgeSocketDeployeventBridgeSocketDeployapidisconnectRouteDisconnectIntegrationBA93024C',
+            },
           ],
-        },
-      })
-    );
+        ],
+      },
+    });
   });
 
   it('creates a new EventBridge rule for given event bus and given event pattern', () => {

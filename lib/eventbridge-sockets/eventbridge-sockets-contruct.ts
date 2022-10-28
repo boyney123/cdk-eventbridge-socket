@@ -1,11 +1,13 @@
-import { WebSocketApi, WebSocketStage } from '@aws-cdk/aws-apigatewayv2';
-import { LambdaWebSocketIntegration } from '@aws-cdk/aws-apigatewayv2-integrations';
-import { AttributeType, Table } from '@aws-cdk/aws-dynamodb';
-import { Construct, RemovalPolicy, CfnOutput, Duration, Stack } from '@aws-cdk/core';
-import { Function, AssetCode, Runtime } from '@aws-cdk/aws-lambda';
-import { PolicyStatement, Effect } from '@aws-cdk/aws-iam';
-import { EventBus, Rule, EventPattern } from '@aws-cdk/aws-events';
-import { LambdaFunction } from '@aws-cdk/aws-events-targets';
+import { CfnOutput, Duration, RemovalPolicy, Stack } from 'aws-cdk-lib';
+import { AttributeType, BillingMode, Table } from 'aws-cdk-lib/aws-dynamodb';
+import { Runtime } from 'aws-cdk-lib/aws-lambda';
+import { EventBus, EventPattern, Rule } from 'aws-cdk-lib/aws-events';
+import { Effect, PolicyStatement } from 'aws-cdk-lib/aws-iam';
+import { Construct } from 'constructs';
+import { WebSocketApi, WebSocketStage } from '@aws-cdk/aws-apigatewayv2-alpha';
+import { WebSocketLambdaIntegration } from '@aws-cdk/aws-apigatewayv2-integrations-alpha';
+import { LambdaFunction } from 'aws-cdk-lib/aws-events-targets';
+import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 
 const path = require('path');
 
@@ -29,7 +31,7 @@ export class EventBridgeWebSocket extends Construct {
     /**
      * API Gateway (Websocket API)
      */
-     const api = new WebSocketApi(this, name, {
+    const api = new WebSocketApi(this, name, {
       apiName: 'EventBridgeSockets',
     });
 
@@ -42,8 +44,7 @@ export class EventBridgeWebSocket extends Construct {
         name: 'connectionId',
         type: AttributeType.STRING,
       },
-      readCapacity: 5,
-      writeCapacity: 5,
+      billingMode: BillingMode.PAY_PER_REQUEST,
       removalPolicy: RemovalPolicy.DESTROY,
     });
 
@@ -53,18 +54,18 @@ export class EventBridgeWebSocket extends Construct {
     const connectFunc = this.createFunction('on-connect', tableName);
     const disconnectFunc = this.createFunction('on-disconnect', tableName);
     const eventBridgeBrokerFunc = this.createFunction('eventbridge-broker', tableName, {
-        initialPolicy: [
-          new PolicyStatement({
-            actions: ['execute-api:ManageConnections'],
-            resources: [`arn:aws:execute-api:${region}:${accountId}:${api.apiId}/*`],
-            effect: Effect.ALLOW,
-          }),
-        ],
-        environment: {
-          TABLE_NAME: tableName,
-          WEBSOCKET_API: `${api.apiEndpoint}/${stage}`,
-        },
-      });
+      initialPolicy: [
+        new PolicyStatement({
+          actions: ['execute-api:ManageConnections'],
+          resources: [`arn:aws:execute-api:${region}:${accountId}:${api.apiId}/*`],
+          effect: Effect.ALLOW,
+        }),
+      ],
+      environment: {
+        TABLE_NAME: tableName,
+        WEBSOCKET_API: `${api.apiEndpoint}/${stage}`,
+      },
+    });
 
     table.grantReadWriteData(connectFunc);
     table.grantReadWriteData(disconnectFunc);
@@ -72,10 +73,10 @@ export class EventBridgeWebSocket extends Construct {
 
     // create routes for API Gateway
     api.addRoute('$connect', {
-      integration: new LambdaWebSocketIntegration({ handler: connectFunc }),
+      integration: new WebSocketLambdaIntegration('ConnectIntegration', connectFunc),
     });
     api.addRoute('$disconnect', {
-      integration: new LambdaWebSocketIntegration({ handler: disconnectFunc }),
+      integration: new WebSocketLambdaIntegration('DisconnectIntegration', disconnectFunc),
     });
 
     new WebSocketStage(this, `${name}-stage`, {
@@ -94,14 +95,15 @@ export class EventBridgeWebSocket extends Construct {
       targets: [new LambdaFunction(eventBridgeBrokerFunc)],
     });
 
-    new CfnOutput(this, 'Websocket endpoint', { value: `${api.apiEndpoint}/${config?.stage}` });
+    new CfnOutput(this, 'Websocket endpoint', {
+      value: `${api.apiEndpoint}/${config?.stage}`,
+    });
   }
 
   private createFunction(name: string, tableName: string, options: any = {}) {
-    return new Function(this, name, {
-      code: new AssetCode(path.join(__dirname, `../lambda-fns/${name}`)),
-      handler: `${name}.handler`,
-      runtime: Runtime.NODEJS_12_X,
+    return new NodejsFunction(this, name, {
+      entry: path.join(__dirname, `../lambda-fns/${name}/${name}.ts`),
+      runtime: Runtime.NODEJS_16_X,
       timeout: Duration.seconds(300),
       memorySize: 256,
       environment: {
