@@ -23,7 +23,7 @@ export const handler = async (event: any) => {
     if (e instanceof Error) {
       return { statusCode: 500, body: e.stack };
     }
-    return { statusCode: 500, body: 'unkown error' };
+    return { statusCode: 500, body: 'unknown error' };
   }
 
   const postCalls = connectionData.Items?.map(async ({ connectionId }: any) => {
