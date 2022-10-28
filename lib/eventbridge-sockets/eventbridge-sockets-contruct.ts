@@ -109,7 +109,7 @@ export class EventBridgeWebSocket extends Construct {
   }
 
   private addAuthorization() {
-    const apiKeySecret = new Secret(this, 'apiKeySecret');
+    const apiKeySecret = new Secret(this, 'apiKeySecret', { removalPolicy: RemovalPolicy.DESTROY });
     const authorizerLambda = new NodejsFunction(this, 'authorizer', {
       entry: path.join(__dirname, '../lambda-fns/authorizer/authorizer.ts'),
       runtime: Runtime.NODEJS_16_X,
