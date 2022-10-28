@@ -11,6 +11,7 @@
     "build": "tsc",
     "watch": "tsc -w",
     "test": "jest",
+    "cdk-example": "cdk --app 'ts-node example/example-app.ts'",
     "bump:lib": "npm --no-git-tag-version --allow-same-version version $VERSION"
   },
   "devDependencies": {
@@ -27,6 +28,7 @@
   },
   "dependencies": {
     "@aws-cdk/aws-apigatewayv2-alpha": "^2.45.0-alpha.0",
+    "@aws-cdk/aws-apigatewayv2-authorizers-alpha": "^2.45.0-alpha.0",
     "@aws-cdk/aws-apigatewayv2-integrations-alpha": "^2.45.0-alpha.0",
     "aws-cdk-lib": "^2.45.0",
     "constructs": "^10.1.127",

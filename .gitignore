@@ -1,3 +1,4 @@
+example/**/*.js
 lib/**/*.js
 test/**/*.js
 !jest.config.js

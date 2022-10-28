@@ -82,6 +82,23 @@ new EventBridgeWebSocket(this, 'sockets', {
 });
 ```
 
+##### Secure api with apikey
+
+```typescript
+new EventBridgeWebSocket(this, 'sockets', {
+  bus: 'your-event-bus-name',
+
+  // Listens for all UserCreated events
+  eventPattern: {
+    detailType: ['UserCreated'],
+  },
+  stage: 'dev',
+  authentication: true,
+});
+```
+
+This will create an aws secret in the secretsmanager with the api key used for authentication. The apikey must be added as query param to the api endpoint url `wss://<apiId>.execute-api.<region>.amazonaws.com/<stage>?apiKey=<valueFromSecret>`
+
 You can find more [here on the AWS documentation](https://docs.aws.amazon.com/cdk/api/latest/docs/@aws-cdk_aws-events.EventPattern.html)
 
 # Contributing
