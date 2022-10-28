@@ -4,10 +4,13 @@ import { Runtime } from 'aws-cdk-lib/aws-lambda';
 import { EventBus, EventPattern, Rule } from 'aws-cdk-lib/aws-events';
 import { Effect, PolicyStatement } from 'aws-cdk-lib/aws-iam';
 import { Construct } from 'constructs';
-import { WebSocketApi, WebSocketStage } from '@aws-cdk/aws-apigatewayv2-alpha';
+import { WebSocketApi, WebSocketAuthorizer, WebSocketAuthorizerType, WebSocketStage } from '@aws-cdk/aws-apigatewayv2-alpha';
 import { WebSocketLambdaIntegration } from '@aws-cdk/aws-apigatewayv2-integrations-alpha';
 import { LambdaFunction } from 'aws-cdk-lib/aws-events-targets';
 import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
+import { Authorizer } from 'aws-cdk-lib/aws-apigateway';
+import { WebSocketLambdaAuthorizer } from '@aws-cdk/aws-apigatewayv2-authorizers-alpha';
+import { Secret } from 'aws-cdk-lib/aws-secretsmanager';
 
 const path = require('path');
 
@@ -15,6 +18,7 @@ export interface EventBridgeWebSocketProps {
   readonly bus: string;
   readonly stage?: string;
   readonly eventPattern?: EventPattern;
+  readonly authentication?: boolean;
 }
 
 export class EventBridgeWebSocket extends Construct {
@@ -71,9 +75,13 @@ export class EventBridgeWebSocket extends Construct {
     table.grantReadWriteData(disconnectFunc);
     table.grantReadWriteData(eventBridgeBrokerFunc);
 
+    // authorizer
+    const authorizer: WebSocketLambdaAuthorizer | undefined = config.authentication ? this.addAuthorization() : undefined;
+
     // create routes for API Gateway
     api.addRoute('$connect', {
       integration: new WebSocketLambdaIntegration('ConnectIntegration', connectFunc),
+      authorizer,
     });
     api.addRoute('$disconnect', {
       integration: new WebSocketLambdaIntegration('DisconnectIntegration', disconnectFunc),
@@ -98,6 +106,24 @@ export class EventBridgeWebSocket extends Construct {
     new CfnOutput(this, 'Websocket endpoint', {
       value: `${api.apiEndpoint}/${config?.stage}`,
     });
+  }
+
+  private addAuthorization() {
+    const apiKeySecret = new Secret(this, 'apiKeySecret');
+    const authorizerLambda = new NodejsFunction(this, 'authorizer', {
+      entry: path.join(__dirname, '../lambda-fns/authorizer/authorizer.ts'),
+      runtime: Runtime.NODEJS_16_X,
+      memorySize: 256,
+      environment: {
+        API_KEY_SECRET: apiKeySecret.secretName,
+      },
+    });
+    apiKeySecret.grantRead(authorizerLambda);
+    const authorizer: WebSocketLambdaAuthorizer = new WebSocketLambdaAuthorizer('authorizer', authorizerLambda, {
+      identitySource: ['route.request.querystring.apiKey'],
+    });
+    Stack.of(this).exportValue(apiKeySecret.secretName, { name: 'ApiKeySecretName' });
+    return authorizer;
   }
 
   private createFunction(name: string, tableName: string, options: any = {}) {

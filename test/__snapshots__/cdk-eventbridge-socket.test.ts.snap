@@ -270,16 +270,13 @@ exports[`EventBridgeWebSocket snapshot test EventsRuleToSns default params 1`] =
             "AttributeType": "S",
           },
         ],
+        "BillingMode": "PAY_PER_REQUEST",
         "KeySchema": [
           {
             "AttributeName": "connectionId",
             "KeyType": "HASH",
           },
         ],
-        "ProvisionedThroughput": {
-          "ReadCapacityUnits": 5,
-          "WriteCapacityUnits": 5,
-        },
         "TableName": "eventBridgeSocketDeploy-connections-table",
       },
       "Type": "AWS::DynamoDB::Table",
@@ -295,7 +292,7 @@ exports[`EventBridgeWebSocket snapshot test EventsRuleToSns default params 1`] =
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "3e0a0f754714a39c50b8d4b23a69e2ffea1ff6f186f10c257f57b04f17740569.zip",
+          "S3Key": "a549b85065ed6603d1aac6495ead30df29d29dab7ce01adb9c4f9d7c376fe472.zip",
         },
         "Environment": {
           "Variables": {
@@ -325,7 +322,7 @@ exports[`EventBridgeWebSocket snapshot test EventsRuleToSns default params 1`] =
             "Arn",
           ],
         },
-        "Runtime": "nodejs12.x",
+        "Runtime": "nodejs16.x",
         "Timeout": 300,
       },
       "Type": "AWS::Lambda::Function",
@@ -455,7 +452,7 @@ exports[`EventBridgeWebSocket snapshot test EventsRuleToSns default params 1`] =
             "Arn",
           ],
         },
-        "Runtime": "nodejs12.x",
+        "Runtime": "nodejs16.x",
         "Timeout": 300,
       },
       "Type": "AWS::Lambda::Function",
@@ -561,7 +558,7 @@ exports[`EventBridgeWebSocket snapshot test EventsRuleToSns default params 1`] =
             "Arn",
           ],
         },
-        "Runtime": "nodejs12.x",
+        "Runtime": "nodejs16.x",
         "Timeout": 300,
       },
       "Type": "AWS::Lambda::Function",
